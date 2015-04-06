@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+{% include hero.html %}
+
+<section class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <section class="blog-post" data-post-url="{{ page.url }}">
+        <h2 class="blog-post-title">
+          <a class="back-link" href="/blog">
+            {{ page.title }}
+            <span class="icon-ms-back"></span>
+          </a>
+        </h2>
+
+        {% include blog/meta.html post=page %}
+
+        <p class="blog-post-meta">
+          <span class="blog-post-author">{{ page.author }}</span>
+          &mdash;
+          <span class="blog-post-data">{{ page.date | date: '%d %B %Y'}}</span>
+        </p>
+
+        <article class="blog-post-content">
+          {{ content }}
+        </article>
+
+      </section>
+    </div>
+  </div>
+</section>
+
+{% include footer.html %}

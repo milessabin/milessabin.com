@@ -1,0 +1,80 @@
+body {
+  font-weight: 400;
+}
+
+pre,code,tt {
+  font-family: "Source Code Pro";
+  font-size: @font-size-base * .9;
+  letter-spacing: -0.03em;
+}
+
+code {
+  font-weight: 500;
+  padding: 0;
+}
+
+.blog-post-title a {
+  text-decoration: none;
+}
+
+a.continue-link {
+  text-decoration: none;
+  font-family: @font-family-sans-serif;
+  font-weight: 400;
+  font-size: @font-size-base * .9;
+}
+
+article.blog-post-content a {
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+
+  &:hover {
+    border-bottom-color: @text-color;
+  }
+}
+
+a.link-anchor {
+  display: block;
+  position: relative;
+  visibiliy: hidden;
+  top: -1.5*@line-height-computed;
+}
+
+a.back-link {
+  .icon-ms-back {
+    visibility: hidden;
+    opacity: .8;
+  }
+
+  &:hover .icon-ms-back {
+    visibility: visible;
+  }
+}
+
+dl.blog-post-meta {
+  display: none;
+}
+
+p.blog-post-meta {
+  font-family: "Source Sans Pro";
+  font-size: @font-size-base * 1.2;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+}
+
+h1,h2,h3 {
+  font-family: "Source Sans Pro";
+  font-weight: 700;
+}
+
+table {
+  td, {
+    border-top: none !important;
+  }
+
+  thead {
+    display: none;
+  }
+
+  .table;
+}

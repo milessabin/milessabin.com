@@ -1,0 +1,27 @@
+---
+layout: default
+title:  Blog
+navbar: blog
+---
+
+{% if paginator.previous_page %}
+{% include hero.html title="Miles Sabin" subtitle="partly shapeless ..." backLink="/blog" %}
+{% else %}
+{% include hero.html title="Miles Sabin" subtitle="partly shapeless ..." %}
+{% endif %}
+
+<section class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="posts">
+        {% for post in paginator.posts %}
+        {% include blog/excerpt.html post=post %}
+        {% endfor %}
+      </div>
+
+      {% include blog/pagination.html %}
+    </div>
+  </div>
+</section>
+
+{% include footer.html %}

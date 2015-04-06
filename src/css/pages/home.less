@@ -1,0 +1,50 @@
+@home-hero-height: @line-height-computed * 22; // 660px
+@home-hero-padding: @line-height-computed * 8;
+@home-hero-arrow-height: 20px;
+@home-logo-height: 132px;
+
+.hero.home-hero {
+  height: 25vh;
+  min-height: 320px;
+  max-height: 640px;
+
+  // background-image: url(/images/home/home-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  // background-attachment: fixed;
+
+  .navbar {
+    position: relative;
+    z-index: 5;
+  }
+
+  .hero-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: @home-hero-arrow-height;
+    height: @home-logo-height +
+      0.5 * @line-height-computed +
+      1.5 * @line-height-computed;
+    z-index: 4;
+
+    text-align: center;
+    color: #ffffff;
+
+    h1 {
+      text-transform: lowercase;
+      margin: 0;
+      img {
+        height: @home-logo-height;
+      }
+    }
+
+    h2 {
+      font-weight: 200;
+      margin: 0.5 * @line-height-computed 0 0;
+      line-height: 1.5 * @line-height-computed;
+    }
+  }
+}

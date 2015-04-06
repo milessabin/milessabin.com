@@ -1,0 +1,67 @@
+@import url('//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600');
+@import url('//fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600');
+@import url('//fonts.googleapis.com/css?family=Source+Serif+Pro:400,600,700');
+
+@gray-darker:              #222;
+@gray-dark:                #333;
+@gray:                     #555;
+@gray-light:               #aaa;
+@gray-lighter:             #f7f7f7;
+
+@btn-primary-bg:           @gray-dark;
+@btn-plain-bg:             #eeeeee;
+
+@shadow-color:             rgba(0, 0, 0, .15);
+@shadow-default:           0 4px 0 @shadow-color;
+@shadow-active:            0 4px 0 fadeIn(@shadow-color, 10%);
+@shadow-navbar:            0 4px 0 fadeOut(@shadow-color, 7%);
+
+@font-family-sans-serif:   "Source Sans Pro", sans-serif;
+@font-family-serif:        "Source Serif Pro", serif;
+@font-family-monospace:    "Source Code Pro", sans-serif;
+@font-family-base:         @font-family-serif;
+
+@font-size-base:           20px;
+@font-size-h1:             floor(@font-size-base * 2.0);
+@font-size-h2:             floor(@font-size-base * 1.8);
+@font-size-h3:             floor(@font-size-base * 1.6);
+@font-size-h4:             floor(@font-size-base * 1.2);
+@font-size-h5:             floor(@font-size-base * 1.0);
+@font-size-h6:             floor(@font-size-base * 0.8);
+
+@line-height-base:         30/18; // MUST BE UNITLESS
+@line-height-computed:     floor(@font-size-base * @line-height-base); // MUST BE px
+
+@fa-font-path:             "/fonts";
+
+@text-color:               #444;
+@link-color:               @text-color;
+@headings-font-weight:     200;
+@code-color:               @text-color;
+@code-bg:                  none;
+@pre-bg:                   #f8f8f8;
+@table-bg:                 #f8f8f8;
+
+@panel-border-radius:      0;
+
+@alert-padding:               15px;
+@alert-border-radius:         @border-radius-base;
+@alert-link-font-weight:      bold;
+
+@navbar-default-color:          #777;
+@navbar-default-bg:             rgba(255, 255, 255, 0.99);
+@navbar-default-hover-color:    #333;
+@navbar-default-hover-bg:       rgba(0, 0, 0, 0.075);
+@navbar-default-active-color:   #555;
+@navbar-default-active-bg:      rgba(0, 0, 0, 0.125);
+@navbar-default-disabled-color: #999;
+@navbar-default-disabled-bg:    transparent;
+
+@navbar-inverse-color:          #fff;
+@navbar-inverse-bg:             transparent;
+@navbar-inverse-hover-color:    #fff;
+@navbar-inverse-hover-bg:       rgba(255, 255, 255, 0.1);
+@navbar-inverse-active-color:   #fff;
+@navbar-inverse-active-bg:      rgba(255, 255, 255, 0.2);
+@navbar-inverse-disabled-color: rgba(255, 255, 255, 0.5);
+@navbar-inverse-disabled-bg:    transparent;
