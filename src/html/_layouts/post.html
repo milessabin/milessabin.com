@@ -27,6 +27,19 @@ layout: default
           {{ content }}
         </article>
 
+        {% comment %}
+        END_COMMENTS
+        {% endcomment %}
+
+        <div data-hubbub-pendingcomments>
+        </div>
+
+        <form data-hubbub action="http://127.0.0.1:8080/api/default/comments">
+          <p>Your name: <input name="metadata_name"></p>
+          <p>Your Comment</p>
+          <textarea name="comment" placeholder="Comment here"></textarea>
+          <p><input type="submit" value="Comment"></p>
+        </form>
       </section>
     </div>
   </div>
