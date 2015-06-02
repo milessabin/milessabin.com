@@ -303,3 +303,8 @@ Adriaan to make it directly accessible.
 [de-morgan]: http://en.wikipedia.org/wiki/De_Morgan%27s_laws
 [parametricity]: http://en.wikipedia.org/wiki/Parametricity
 [products]: http://james-iry.blogspot.com/2011/05/why-eager-languages-dont-have-products.html
+
+Comment by Tom
+--------
+Another test
+
