@@ -6,3 +6,4 @@ _theme_packages/*
 /dist
 /node_modules
 /target
+id_deploy

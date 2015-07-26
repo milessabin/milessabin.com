@@ -16,6 +16,8 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-webfont"
 
   grunt.initConfig
+    user: process.env.DEPLOYUSER
+    destination: process.env.DEST
     less:
       screen:
         options:
@@ -77,7 +79,7 @@ module.exports = (grunt) ->
       jekyllLive:
         cmd: "bundle exec jekyll build --trace --config jekyll_config.yml"
       deploy:
-        cmd: 'rsync --progress -a --delete --exclude files -e "ssh -q" target/ dreamhost:milessabin.com'
+        cmd: 'rsync -a --delete -e "ssh -q -i id_deploy -l <%= user %> -o StrictHostKeyChecking=no" target/ <%= destination %>'
 
     watchImpl:
       options:
@@ -128,7 +130,7 @@ module.exports = (grunt) ->
   grunt.renameTask "watch", "watchImpl"
 
   grunt.registerTask "build:base", [
-    # "webfont"
+    "webfont"
     "less"
     "browserify"
     "copy"

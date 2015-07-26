@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - "0.10"
+rvm:
+  - 1.9.3
+before_install:
+  - npm install -g grunt-cli
+  - openssl aes-256-cbc -K $encrypted_8ebea8de894c_key -iv $encrypted_8ebea8de894c_iv -in id_deploy.enc -out id_deploy -d
+  - chmod 600 id_deploy
+install:
+  - npm install
+  - gem install bundler
+  - bundle install
+script:
+  - if [[ "${TRAVIS_PULL_REQUEST}" == "false" && "${TRAVIS_BRANCH}" == "master" ]]; then
+      grunt deploy ;
+    else
+      grunt build ;
+    fi
+sudo: false
+cache:
+  directories:
+    - node_modules
+env:
+  global:
+  - secure: bE0qcqYZhdRXNmQHrbDnzFDdvyqj930F9HVwimAefD9pfEO+LfPdzXKId4X5o9PdQIhEOL+xfL2tjtEpG4BiHn2rl0Cw1tt/UlwXJBU8M2JU622VPb0ldaQSe1R1I7MzEGWW4zyVVu4fJws5BjmNlrexETUZ79ifbHGxf0Nnd3s=
+  - secure: KFSL19A1FPS0f1WPA6TI/ED47WK/UPXVvptZbJU/vLk0tXle0auQeX5Sfop8bgZEPsjXbnlZswEGwqQsdweUtcqCGdnNsfYdH28Y7Mahc10+jyb6Aa1di5OETfLyN3YLSb6Lrf5wDWmx4E9ft/jsFgNzLfAku3t/jLG5V73QoDc=
