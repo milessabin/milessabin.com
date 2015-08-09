@@ -12,7 +12,7 @@ install:
   - gem install bundler
   - bundle install
 script:
-  - if [[ "${TRAVIS_PULL_REQUEST}" == "false" && "${TRAVIS_BRANCH}" == "master" ]]; then
+  - if [[ "${TRAVIS_PULL_REQUEST}" == "false" && "${TRAVIS_BRANCH}" == "wip/comment-test" ]]; then
       grunt deploy ;
     else
       grunt build ;
@@ -23,5 +23,5 @@ cache:
     - node_modules
 env:
   global:
-  - secure: bE0qcqYZhdRXNmQHrbDnzFDdvyqj930F9HVwimAefD9pfEO+LfPdzXKId4X5o9PdQIhEOL+xfL2tjtEpG4BiHn2rl0Cw1tt/UlwXJBU8M2JU622VPb0ldaQSe1R1I7MzEGWW4zyVVu4fJws5BjmNlrexETUZ79ifbHGxf0Nnd3s=
-  - secure: KFSL19A1FPS0f1WPA6TI/ED47WK/UPXVvptZbJU/vLk0tXle0auQeX5Sfop8bgZEPsjXbnlZswEGwqQsdweUtcqCGdnNsfYdH28Y7Mahc10+jyb6Aa1di5OETfLyN3YLSb6Lrf5wDWmx4E9ft/jsFgNzLfAku3t/jLG5V73QoDc=
+  - secure: HZLA3vVnzfADdgh/K0JuSWDLmLvqXSoj5Yvuys4zVGsa//5dQ0URlnzTEBg6hGREbo3YBHuuYslp1/hLBaGwn5ahrlJlCrHiJMOJu4UqGgBJP/aZDZy5x9gcAO8vc8LF/yYx2DEvH3XsWxoSKqynwACtKHhwvJ3TvSH2HKMNI2I=
+  - secure: RdHepHHrXs7h9kryyLhak/VMJQfFpjw9/iacEps3ki38qgjQ/FqqNDRvTCqfyoaFxDExIGuS9UC/K4aePCV8jV3L2rw9dkjzlnCJvAGvmnH8heu6dsvgpxFfBC23dwFD6RfGGmKA4LI/Lu3yg270FbC7bk0jh15jbHdUcuW+Jfc=
