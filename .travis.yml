@@ -23,5 +23,5 @@ cache:
     - node_modules
 env:
   global:
-  - secure: HZLA3vVnzfADdgh/K0JuSWDLmLvqXSoj5Yvuys4zVGsa//5dQ0URlnzTEBg6hGREbo3YBHuuYslp1/hLBaGwn5ahrlJlCrHiJMOJu4UqGgBJP/aZDZy5x9gcAO8vc8LF/yYx2DEvH3XsWxoSKqynwACtKHhwvJ3TvSH2HKMNI2I=
-  - secure: RdHepHHrXs7h9kryyLhak/VMJQfFpjw9/iacEps3ki38qgjQ/FqqNDRvTCqfyoaFxDExIGuS9UC/K4aePCV8jV3L2rw9dkjzlnCJvAGvmnH8heu6dsvgpxFfBC23dwFD6RfGGmKA4LI/Lu3yg270FbC7bk0jh15jbHdUcuW+Jfc=
+  - secure: Rcs3f5Crw/UbuUXqLAYAiD4da1nbROz4TD5/CK4upSriT9GsW1fiffGHa9c1T2N+3ZMCY7cyJ1kBCxz3bC98Bo+scpK+oRNU8MvhBC3IvKU5Y9Wps193C0zyAzuT248jpAFjYNZONiRcAo2vWl6VLJfZCWGKqa4IJgLrcNd3kTI=
+  - secure: UExqdZRQLG/GDKq2OsIqsksAK1i9JoY6hp7yHU/Nuoo1RLEywZLvF+Q/UBLNtNaQR+ZUYcZM9A5YYs6Ep6AqwMcxcgdR7/FlhL9F7u7agBoM/dYb6IProeUum1BEypxwR4/qFwIEsWB2G1WUXNFF69cgI0DYrrRHkbXMjI34kmc=
