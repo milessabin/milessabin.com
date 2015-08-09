@@ -472,5 +472,16 @@ This is a _comment_, using GFM features,
 def foo: Int = 23
 ```
 
+Comment by Miles Sabin
+--------
+Testing syntax highlighting,
+
+```scala
+object singleton extends (Id ~> Set) {
+  def apply[T](t: T): Set[T] = Set.apply[T](t)
+}
+```
+
+
 
 
