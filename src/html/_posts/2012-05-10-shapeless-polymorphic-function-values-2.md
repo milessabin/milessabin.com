@@ -461,4 +461,16 @@ Comment by Miles Sabin
 --------
 This is another comment.
 
+Comment by Miles Sabin
+--------
+This is a _comment_, using GFM features,
++ *emphasis*
++ lists
++ fenced code blocks
+
+```scala
+def foo: Int = 23
+```
+
+
 
