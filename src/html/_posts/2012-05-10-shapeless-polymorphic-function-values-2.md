@@ -489,4 +489,14 @@ object singleton extends (Id ~> Set) {
 
 ---
 
+##### Miles Sabin ---
+This is a nicely styled comment, with *emphasis* and a fenced code block,
+
+```scala
+def foo: String = "foo"
+```
+
+---
+
+
 
