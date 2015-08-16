@@ -505,7 +505,7 @@ Comment testing -- en-dashes --- em-dashes and "smart quotes".
 ## heading
 ### heading
 #### heading
-#####heading
+##### heading
 
 ---
 
