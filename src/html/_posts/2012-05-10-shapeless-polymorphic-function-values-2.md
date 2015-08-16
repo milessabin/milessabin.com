@@ -498,5 +498,17 @@ def foo: String = "foo"
 
 ---
 
+##### Miles Sabin ---
+Comment testing -- en-dashes --- em-dashes and "smart quotes".
+
+# heading
+## heading
+### heading
+#### heading
+##### heading
+
+---
+
+
 
 
