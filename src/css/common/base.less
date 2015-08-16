@@ -62,7 +62,7 @@ p.blog-post-meta {
   border-bottom: 1px solid #eee;
 }
 
-h1,h2,h3 {
+h1,h2,h3,h4,h5,label {
   font-family: "Source Sans Pro";
   font-weight: 700;
 }
@@ -77,4 +77,23 @@ table {
   }
 
   .table;
+}
+
+div.comments {
+  hr {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+input.noLastPassStyle {
+  background-image:none !important;
+  background-attachment:none !important;
+  padding-right:0 !important;
+  border:1px solid #ABADB3 !important;
+}
+
+textarea {
+  resize: vertical;
+  min-height: @line-height-computed * 8;
 }
