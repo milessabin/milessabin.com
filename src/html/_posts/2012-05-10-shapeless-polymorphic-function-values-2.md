@@ -509,6 +509,12 @@ Comment testing -- en-dashes --- em-dashes and "smart quotes".
 
 ---
 
+##### Miles Sabin ---
+Another comment after a manual edit ...
+
+---
+
+
 
 
 
