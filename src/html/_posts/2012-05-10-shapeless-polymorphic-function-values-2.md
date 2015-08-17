@@ -542,8 +542,6 @@ The answers would be:
 
 The usual test:
 
-<script>alert('boo');</script>
-
 ``` scala
 // We need an f
 val f = ???
