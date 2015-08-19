@@ -529,4 +529,27 @@ This is nice.
 
 ---
 
+##### Richard ---
+I for one welcome the new commenting system.
+
+> Does it handle quoting?
+
+The answers would be:
+
+* Yes
+* No
+* Somewhat
+
+The usual test:
+
+``` scala
+// We need an f
+val f = ???
+```
+
+:+1:
+
+---
+
+
 
