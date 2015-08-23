@@ -565,6 +565,14 @@ val f = ???
 Yet another comment ...
 ---
 
+##### Miles Sabin -- Sun, 23rd Aug 2015, 9:30pm BST
+&gt; This is a blockquote ...
+&gt; over multiple ...
+&gt; lines.
+
+---
+
+
 
 
 
