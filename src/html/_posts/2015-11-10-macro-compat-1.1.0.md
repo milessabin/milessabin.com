@@ -6,7 +6,7 @@ date:       '2015-11-10 12:00:00'
 ---
 
 Whoops! Binary compatibility was broken in 1.0.3 and again in 1.0.6. <span class="break"></span> In version 1.0.7
-binary compatability with 1.0.3-5 were been restored and 1.0.6 is now deprecated. The binary compatibility breaking
+binary compatability with 1.0.3-5 has been restored and 1.0.6 is now deprecated. The binary compatibility breaking
 changes have been moved to 1.1.0 and hopefully the addition of [MiMa][mima] to the build will make a recurrence of
 this sort of breakage much less likely in future.
 
