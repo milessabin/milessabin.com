@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Typelevel - The benefits of community - typelevel.org</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style type="text/css">
+    body { font-family: 'Lato';}
+    h1, h2, h3 {
+      font-weight: normal;
+    }
+    .remark-code, .remark-inline-code {
+      font-family: 'DejaVu Sans Mono';
+    }
+
+    .typelevel {
+      background: #0E2C3C;
+      color: white;
+      font-size: 180%;
+    }
+    .typelevel a {
+      color: white;
+      text-decoration: none;
+    }
+    .typelevel h1 {
+      text-align: center;
+    }
+    .title > h1 {
+      margin-top: -5%;
+      font-size: 200%;
+    }
+    .title > h2 {
+      font-size: 150%;
+    }
+    .title > h3  {
+      font-size: 100%;
+    }
+    .title img {
+      margin-bottom: -20%;
+      height: 5em;
+    }
+    ol {
+      margin: 0;
+      padding: 0;
+      line-height: 60px;
+      list-style-type: none;
+    }
+    ul > li {
+      margin: 0 0 3% 0;
+      padding: 0;
+    }
+    blockquote {
+      font-size: 200%;
+    }
+    .wide {
+      margin: 0;
+      padding: 0;
+    }
+    .hero {
+      background-image: url(img/hero-left-overlay-white.svg);
+      webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+  <textarea id="source">
+    name: inverse
+    layout: true
+    class: typelevel
+    ---
+    class: center, middle, hero
+
+    .title[
+      # Typelevel
+      ## The benefits of collaboration
+
+      ### Miles Sabin, [@milessabin](http://twitter.com/milessabin)
+
+      [![Typelevel logo](img/typelevel.svg)](http://typelevel.org)
+    ]
+
+    ---
+    class: center, middle, hero
+
+    .title[
+      # Typelevel
+      ## The benefits of community
+
+      ### Miles Sabin, [@milessabin](http://twitter.com/milessabin)
+
+      [![Typelevel logo](img/typelevel.svg)](http://typelevel.org)
+    ]
+
+    ---
+    # Let me take you back ...
+
+    --
+    * Typelevel Scala fork
+
+    --
+    * State of the Typelevel
+
+    --
+    * Code of conduct
+
+    --
+    * Scalaz drama
+
+    --
+    * ...
+
+    --
+    * Cats started
+
+    --
+    * Profit!
+
+    ---
+    class: center, middle
+
+    # What _is_ Typelevel?
+
+    ---
+    # What is Typelevel ...
+
+    Typelevel is a community of projects and individuals organized around ...
+
+    --
+    * Pure, typeful, functional programming in Scala
+
+    --
+    * Independent free and open source software
+
+    --
+    * A desire to share ideas and code
+
+    --
+    * Accessible and idiomatic learning resources
+
+    --
+    * An inclusive, welcoming and safe environment
+
+    --
+
+    See Erik Osheim's Scala World talk ...
+
+    ---
+    # The new project landscape
+
+    * Standalone libraries
+    
+    ```text
+    + Algebra, Cats, Alleycats
+    + Circe
+    + Dogs
+    + Doobie
+      Monocle
+    + Refined
+      Scodec
+      shapeless
+      Spire
+
+    - Argonaut
+    - Scalaz
+    - scalaz-stream
+    ```
+    ---
+    # The new project landscape
+
+    * Tools, tests and laws
+
+    ```text
+    + Catalysts
+      Discipline
+    + ENSIME
+      ScalaCheck
+      Specs2
+    + Tut
+    ```
+
+    ---
+    # The new project landscape
+
+    * Integrations
+
+    ```text
+    + argonaut-shapeless
+    + kittens
+    + scalacheck-shapeless
+      shapeless-contrib
+    + spray-json-shapeless
+    ```
+    ---
+    # The new project landscape
+
+    * Macro/plugin helpers
+
+    ```text
+    + export-hook
+    + imp
+      kind-projector
+    + local-implicits
+    + machinist
+    + macro-compat
+    + simulacrum
+    ```
+    ---
+    # The new project landscape
+
+    Typelevel Scala ...
+
+    --
+    * Activity around Cats has taken precedence
+
+    --
+    * Some progress though: see George Leontiev's Scala World talk ...
+
+    --
+
+    ```text
+    + Byte and Short literals
+    + Primes at the end of identifiers
+    + Currency symbols in identifiers
+    + Irrefutable patterns in for comprehensions
+    + @implicitAmbiguous annotation
+    + Explicit type annotations required for implicits
+    + Colour support in the REPL
+    + Syntax for type lambdas
+    ```  
+
+    ---
+    # Scodec, shapeless, Spire
+
+    * Well established libraries
+
+    --
+
+      * Scodec is a suite of libraries for working with binary data
+
+    --
+      * shapeless is a generic programming library for Scala
+
+    --
+      * Spire is a general, fast and precise numeric library for Scala
+
+    --
+    * All three are widely used, directly or indirectly
+
+    --
+    * Two of them have excellent documentation
+
+    ---
+    # Discipline, ScalaCheck, Specs2
+
+    * Also well established
+
+    --
+
+      * Discipline provides law checking for type classes
+
+    --
+      * ScalaCheck provides automated property based testing
+
+    --
+      * Specs2 is a library for writing executable software specification
+
+    ---
+    # Integrations
+
+    * Generic extensions of other libraries
+
+    --
+
+      * shapeless-contrib
+
+    --
+      * argonaut-shapeless
+      * scalacheck-shapeless
+      * spray-json-shapeless
+
+    --
+      * kittens
+
+    ---
+    # Algebra, Cats, Alleycats
+
+    --
+    * Cats &mdash; http://non.github.io/cats/
+
+    [![Cats logo](img/cats.png)](http://non.github.io/cats/)
+
+    --
+    * Algebra &mdash; algebraic type classes extracted from Spire and Algebird
+
+    --
+    * Alleycats &mdash; "lawless" type classes and instances
+
+    --
+    * Incredible activtity &mdash; 57 contributors and 1558 commits since Jan
+
+    ---
+    # Algebra, Cats, Alleycats
+
+    Guiding principles ...
+
+    --
+    * Approachability
+
+    * Modularity
+
+    * Documentation
+
+    * Efficiency
+
+    --
+
+    See Stew O'Connor's talk on Cats at Scala by the Bay ...
+
+    ---
+    # Tut
+
+    --
+    Tut is a markdown processor which interprets Scala in code blocks
+
+    --
+
+    Yes &mdash; typechecked documentation!
+
+    --
+
+    Used by,
+
+    * Cats
+    * Doobie
+    * Essential Slick &mdash; a book
+
+    ---
+    # Tut
+
+    Given this input
+
+        Here is how you add numbers:
+        ```tut
+        1 + 1
+        ```
+    Running Tut will produce
+
+        Here is how you add numbers:
+        ```scala
+        scala> 1 + 1
+        res0: Int = 2    
+        ```
+    ---
+    # Circe
+
+    --
+    * Circe is a JSON library for Scala (and Scala.js)
+
+    --
+    * Derived from Argonaut with some important differences
+
+    --
+      * Depends on Cats rather than Scalaz
+
+    --
+      * Uses jawn for parsing
+
+    --
+      * Uses Monocle for lenses, works with Refined
+
+    --
+      * Uses shapeless and export-hook for codec derivation
+
+    --
+      * Simplifies API relative to Argonaut
+
+    ---
+    # Circe
+
+    ```scala
+    import io.circe._, io.circe.generic.auto._, io.circe.parse._, io.circe.syntax._
+
+    sealed trait Foo
+    case class Bar(xs: List[String]) extends Foo
+    case class Qux(i: Int, d: Option[Double]) extends Foo
+
+    scala> val foo: Foo = Qux(13, Some(14.0))
+    foo: Foo = Qux(13,Some(14.0))
+
+    scala> foo.asJson.noSpaces
+    res0: String = {"Qux":{"d":14.0,"i":13}}
+
+    scala> decode[Foo](foo.asJson.spaces4)
+    res1: cats.data.Xor[io.circe.Error,Foo] = Right(Qux(13,Some(14.0)))
+    ```
+    ---
+    # Doobie
+
+    --
+    * Doobie is a pure functional JDBC layer for Scala
+
+    --
+    * Depends on scalaz, scalaz-stream and shapeless
+
+    --
+    * Excellent [documentation](http://tpolecat.github.io/doobie-0.2.3/01-Introduction.html) using Tut
+
+    --
+    * Notable as a rare project that _reduced_ compile times by using shapeless!
+
+    ---
+    # Doobie
+
+    ```scala
+    import doobie.imports._, scalaz.effect.IO
+
+    val xa = DriverManagerTransactor[IO](
+      "org.postgresql.Driver", "jdbc:postgresql:world", "postgres", ""
+    )
+
+    case class Country(code: String, name: String, population: Long)
+
+    def find(n: String): ConnectionIO[Option[Country]] = 
+      sql"select code, name, population from country where name = $n".query[Country].option
+
+    // And then
+
+    scala> find("France").transact(xa).unsafePerformIO
+    res0: Option[Country] = Some(Country(FRA,France,59225700)) 
+    ```
+
+    ---
+    # Monocle
+
+    --
+    * Monocle is strongly inspired by Haskell Lens
+
+    --
+    * The recommended lens library for Scala
+
+    --
+    * Uses scalaz, support for Cats is in progress
+
+    --
+    * Works with Refined
+
+    ---
+    # Monocle
+
+    ```scala
+    case class Company(address: Address, ...)
+    case class Address(street: Street, ...)
+    case class Street(name: String, ...)
+
+    val company = Company(...)
+
+    company.copy(
+      address = company.address.copy(
+        street = company.address.street.copy(
+          name = company.address.street.name.capitalize
+        }
+      )
+    )
+    ```
+
+    ---
+    # Monocle
+
+    ```scala
+    case class Company(address: Address, ...)
+    case class Address(street: Street, ...)
+    case class Street(name: String, ...)
+
+    val company = Company(...)
+
+    val address = GenLens[Company](_.address)
+    val street = GenLens[Address](_.street)
+    val name = GenLens[Street](_.name)
+
+    val focus = address composeLens street composeLens name
+    
+    focus.modify(_.capitalize(company))
+
+    ```
+
+    ---
+    # Refined
+
+    * Refined is a library which allows sets of values to be constrained using type level properties at compile time
+
+    --
+
+    ```scala
+    val i1: Int @@ Positive = 5
+    i1: Int @@ Positive = 5
+
+    val i2: Int @@ Positive = -5
+    <console>:21: error: Predicate failed: (-5 > 0).
+           val i2: Int @@ Positive = -5
+                                      ^
+    ```
+
+    --
+    * Uses shapeless's facilities for working with Scala's singleton types.
+
+    --
+    * Large collection of type level predicates [available](https://github.com/fthomas/refined#provided-predicates)
+
+    ---
+    # Refined
+
+    * Used with Monocle supports bitwise lensing into integral types
+
+    --
+    * Used with Circe allows constraints to be imposed on generic types
+
+    ```scala
+    case class Foo(i: Int Refined Positive)
+    val foo = Foo(refineV(4))
+
+    foo.asJson.nospaces == """{"i":4}"""
+
+    val valid = """{"i":1}"""
+    decode[Foo](valid) == Right(Foo(1))
+    
+    val bogus = """{"i":-1}"""
+    decode[Foo](bogus) == Left(Error(...))
+    ```
+
+    --
+    * argonaut-shapeless provides similar facilities for Argonaut
+
+    ---
+    # Simulacrum
+
+    * Provides first class syntactic support for type classes in Scala
+
+    * Used by Cats, Alleycats, Kittens and others
+    
+    ---
+    # Simulacrum
+
+    Reduces this type class boilerplate (some trimmed) ...
+
+    ```scala
+    trait Semigroup[A] { def append(x: A, y: A): A }
+
+    object Semigroup {
+      def apply[A](implicit instance: Semigroup[A]): Semigroup[A] = instance
+
+      trait Ops[A] {
+        def typeClassInstance: Semigroup[A]
+        def self: A
+        def |+|(y: A): A = typeClassInstance.append(self, y)
+      }
+
+      trait ToSemigroupOps {
+        implicit def toSemigroupOps[A](target: A)(implicit tc: Semigroup[A]): Ops[A] =
+           new Ops[A] {
+            val self = target
+            val typeClassInstance = tc
+          }
+      }
+    }
+    ```
+
+    ---
+    # Simulacrum
+
+    ... to this
+
+    ```scala
+    import simulacrum._
+
+    @typeclass trait Semigroup[A] {
+      @op("|+|") def append(x: A, y: A): A
+    }
+    ```
+
+    ---
+    # Machinist
+
+    * Eliminates the overhead due to operator extension methods
+
+    * Automatically remaps symbolic operators to text names
+
+    * Used in Spire and Cats
+
+    ---
+    # Machinist
+
+    An example with the Cats `Eq` type class,
+
+    ```scala
+    trait Eq[A] {
+      def eqv(lhs: A, rhs: A): Boolean
+    }
+
+    object Eq {
+      implicit val intEq = new Eq[Int] {
+        def eqv(lhs: Int, rhs: Int): Boolean = lhs == rhs
+      }
+
+      implicit class EqOps[A](x: A)(implicit ev: Eq[A]) {
+        def ===(rhs: A): Boolean = macro DefaultOps.binop[A, Boolean]
+      }
+    }
+    ```
+    
+    ---
+    # Machinist
+
+    Enables the following rewriting,
+
+    ```scala
+    // Scala code we write
+    a === b
+
+    // What we might expect
+    new EqOps(a)(Eq.intEq).===(b) // which calls eqv(a, b)
+
+    // What we get
+    Eq.intEq.eqv(a, b)
+    ```
+    
+    --
+    * Significant performance improvement for numerics
+
+    * Symbol remapping encourages use of text names
+
+    ---
+    # Kind-projector
+
+    * Nice syntax for type lambdas
+
+    --
+    * Used widely in Cats and Kittens
+
+    --
+
+    ```scala
+    val m = Map("foo" -> 0, "bar" -> 1, "baz" -> 2)
+    val F = Functor[({ type λ[t] => Map[String, t] })#λ]
+
+    scala> F.map(m)(_+1)
+    res0 = Map("foo" -> 1, "bar" -> 2, "baz" -> 3)
+
+    scala> F.map(m)(_.toString)
+    res1 = Map("foo" -> "0", "bar" -> "1", "baz" -> "2")
+    ```
+
+    ---
+    # Kind-projector
+
+    * Nice syntax for type lambdas
+
+    * Used widely in Cats and Kittens
+
+    ```scala
+    val m = Map("foo" -> 0, "bar" -> 1, "baz" -> 2)
+    val F = Functor[Map[String, ?]]
+
+    scala> F.map(m)(_+1)
+    res0 = Map("foo" -> 1, "bar" -> 2, "baz" -> 3)
+
+    scala> F.map(m)(_.toString)
+    res1 = Map("foo" -> "0", "bar" -> "1", "baz" -> "2")
+    ```
+    ---
+    # export-hook
+    
+    * Provides improved management of the implicit scope of type classes
+
+    --
+
+      * Allows injection of derived instances with minimal dependencies
+
+    --
+      * Makes the priority of instances easier to understand
+
+    --
+    * Used by Circe, Alleycats and Kittens ... more to follow
+
+    ---
+    # export-hook
+
+    Motivating example from Kittens ...
+
+    ```scala
+    trait Functor[F[_]] {
+      def map[T, U](ft: F[T])(f: T => U): F[U]
+    }
+
+    object Functor {
+      def apply[F[_]](implicit ff: Functor[F]) = f
+
+      implicit def option = new Functor[Option] {
+        def map[T, U](ot: Option[T])(f: T => U): Option[U] = ot.map(f)
+      }
+    }
+
+    Functor[Option] // instance defined above
+    ``` 
+
+    ---
+    # export-hook
+
+    Motivating example from Kittens ...
+
+    ```scala
+    trait Functor[F[_]] {
+      def map[T, U](ft: F[T])(f: T => U): F[U]
+    }
+
+    object Functor {
+      def apply[F[_]](implicit ff: Functor[F]) = f
+
+      implicit def option = new Functor[Option] {
+        def map[T, U](ot: Option[T])(f: T => U): Option[U] = ot.map(f)
+      }
+    }
+
+    case class Foo[T](t: T)
+
+    import magic.derivation.stuff._
+
+    Functor[Foo] // magical instance
+    ``` 
+
+    ---
+    # export-hook
+
+    Motivating example from Kittens ...
+
+    ```scala
+    trait Functor[F[_]] {
+      def map[T, U](ft: F[T])(f: T => U): F[U]
+    }
+
+    object Functor {
+      def apply[F[_]](implicit ff: Functor[F]) = f
+
+      implicit def option = new Functor[Option] {
+        def map[T, U](ot: Option[T])(f: T => U): Option[U] = ot.map(f)
+      }
+    }
+
+    case class Foo[T](t: T)
+
+    import magic.derivation.stuff._
+
+    Functor[Foo] // magical instance
+
+    Functor[Option] // Now what?
+    ``` 
+
+    ---
+    # export-hook
+
+    * We want explicit instances to be preferred to derived
+
+    --
+    * We don't want to bake a dependency on the derivation magic into the type class
+
+    --
+
+    ```scala
+    trait Functor[F[_]] ...
+
+    @imports[Functor]
+    object Functor {
+      ...
+    }
+
+    // Independently provided ...
+    trait DerivedFunctor[F[_]] extends Functor[F]
+
+    @exports(Generic)
+    object DerivedFunctor {
+      // mechanics to manufacture derivable instances
+      ...
+    }
+    ```
+    
+    ---
+    # macro-compat
+
+    * Allows uniform 2.11 style macros to be compiled for both 2.11.x and 2.10.x.
+
+    --
+    * Used by export-hook, Monocle, Refined, simulacrum and soon shapeless
+
+    --
+
+    ```scala
+    import scala.reflect.macros.whitebox
+
+    object Test {
+      def foo: Int = macro TestMacro.fooImpl
+      def bar(i: Int): String = macro TestMacro.barImpl
+    }
+
+    @bundle // macro-compat addition
+    class TestMacro(val c: whitebox.Context) {
+      import c.universe._
+
+      def fooImpl: Tree = q""" 23 """
+      def barImpl(i: Tree): Tree = q""" "bar" """
+    } 
+    ```
+
+    ---
+    # Typeclassic
+
+    Several of the projects just mentioned support type classes in Scala
+
+    --
+    * simulacrum
+
+    * machinist
+
+    * export-hook
+
+    --
+    
+    shapeless's `cachedImplicit` and `Lazy`, `Strict` and `Cached` also support type classes
+
+    --
+
+    Extract those shapeless features and combine with the other projects?
+
+    Speculative at the moment &mdash; working title Typeclassic
+
+    ---
+    # Typelevel Scala
+
+    --
+    * Activity around Cats has taken precedence
+
+    --
+    * Macro and plugin helpers have taken up a lot of the slack
+
+    --
+
+      * We have a clearer picture of the trade offs
+
+    --
+      * Tackle small issues in helpers, larger in the compiler
+
+    --
+    * Forking the compiler is the easy part ...
+
+    ---
+    # Catalysts
+
+    --
+    * Many projects, many dependencies
+
+    --
+    * Many target platforms: JVM, JS, Typesafe, Typelevel
+
+    --
+    * How do we manage this?
+
+    --
+    * Catalysts provides common build infrastructure
+
+    --
+    * Crucible will provide a community build for Typelevel projects
+
+    --
+    * Crucible could provide a platform for decentralized evolution of the ecosystem
+    
+    ---
+    class: center, middle
+
+    # Get involved!
+
+    ---
+    # Online resources
+
+    * Start at http://typelevel.org
+
+    --
+
+      * Hosts an up to date project index
+
+    --
+      * Home of the Typelevel blog: http://typelevel.org/blog
+
+    --
+      * Long overdue a makeover ... in progress, help wanted!
+
+    --
+    * Most projects have a lively presence on http://gitter.im
+
+    --
+      * http://gitter.im/typelevel/general
+
+      * http://gitter.im/non/cats
+
+      * http://gitter.im/milessabin/shapeless
+
+    ---
+    # The Typelevel Summits
+
+    Until now Typelevel has mainly existed online
+
+    --
+
+    We're changing that!
+
+    --
+    * Typelevel Summit US
+  
+      * Colocated with NEScala, Philadelphia, 2-3rd March
+
+    --
+    * Typelevel Summit Europe
+
+      * Colocated with flatMap(Oslo), 4th May
+    
+    ---
+    class: center, middle
+
+    # Questions?
+
+    ---
+    class: center, middle, hero
+
+    .title[
+      # Thank You
+      ## Miles Sabin, [@milessabin](http://twitter.com/milessabin)
+      ### http://typelevel.org/
+
+      [![Typelevel logo](img/typelevel.svg)](http://typelevel.org)
+    ]
+
+  </textarea>
+  <!--
+    There's a copy of this JS included in the cached folder,
+    to give yourself a chance if you have no internets /o\
+  -->
+  <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+  </script>
+  <script>
+    var slideshow = remark.create({
+      //ratio: '4:3',
+      ratio: '16:9',
+
+
+      slideNumberFormat: '',
+      // Or you might like the page number bottom right:
+      // slideNumberFormat: '%current%',
+
+      // Default: use ```sql ..``` etc to override
+      highlightLanguage: 'scala',
+
+      // Plausible style for blue background:
+      highlightStyle: 'github',
+
+      // These also look reasonable:
+      //highlightStyle: 'default',
+      //highlightStyle: 'ascetic',
+      //highlightStyle: 'vs',
+
+      //Good styles, but don't really work with a blue background:
+      //highlightStyle: 'ir_black',
+      //highlightStyle: 'dark',
+
+      });
+  </script>
+</body>
+</html>
