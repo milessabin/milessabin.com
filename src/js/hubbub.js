@@ -63,6 +63,13 @@
     localStorage["hubbubPendingComments:" + post] = JSON.stringify(pendingComments);
   }
 
+  function removePendingComment(post, comment) {
+    post = post || defaults.post;
+    var pendingComments = JSON.parse(localStorage["hubbubPendingComments:" + post] || '[]');
+    pendingComments = pendingComments.filter(function (c) { return c.update_url !== comment.update_url; });
+    localStorage["hubbubPendingComments:" + post] = JSON.stringify(pendingComments);
+  }
+
   function clearPendingComments(post) {
     post = post || defaults.post;
     delete localStorage["hubbubPendingComments:" + post];
@@ -121,19 +128,69 @@
 
       xmlhttp.send();
     });
+
+    // Return the ones from the cache eright now, the callback will be
+    // used once we've checked them
+    return pendingComments;
   }
 
-  function addPendingCommentToDOM(container, html) {
+  function addPendingCommentToDOM(container, comment) {
+    var html = comment.html;
     var commentEl = document.createElement('div');
     commentEl.className = "hubbub-pending hubbub-added";
     commentEl.innerHTML = html;
     container.appendChild(commentEl);
+    var editBar = document.createElement('div');
+    editBar.className = "hubbub-editbar";
+
+    commentEl.appendChild(editBar);
+
+    var deleteButton = document.createElement('a');
+    deleteButton.textContent = "Delete pending comment";
+    deleteButton.className = "hubbub-delete-button";
+    deleteButton.addEventListener('click', function () {
+      if (!confirm("Delete comment?")) return;
+      deleteComment(comment, function (deleted) {
+        if (deleted) {
+          commentEl.parentNode.removeChild(commentEl);
+        } else {
+          alert("Failed to delete comment");
+        }
+      });
+    });
+
+    editBar.appendChild(deleteButton);
 
     // Remove the hubbub-added class to allow CSS transitions to
     // work
     setTimeout(function () {
       commentEl.className = "hubbub-pending";
     }, 100);
+    return commentEl;
+  }
+
+  function deleteComment(comment, callback) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("DELETE", comment.update_url, true);
+
+    xmlhttp.onload = function (e) {
+      if (xmlhttp.readyState === 4) {
+        if (xmlhttp.status === 200) {
+          removePendingComment(null, comment);
+          callback(true);
+        } else if (xmlhttp.status === 404) {
+          callback(false);
+        } else {
+          callback(false);
+        }
+      }
+    };
+
+    xmlhttp.onerror = function (e) {
+      callback(false);
+    };
+
+    xmlhttp.send();
   }
 
   // Trap all submit events and check for a data-hubbub attribute, if
@@ -180,7 +237,7 @@
         // while it is pending
         storePendingComment(null, commentResponse);
 
-        addPendingCommentToDOM(previewContainer, commentResponse.html);
+        addPendingCommentToDOM(previewContainer, commentResponse);
       }
     }
 
@@ -192,17 +249,28 @@
   }
   document.addEventListener('submit', onSubmit);
 
+  function showPendingComments (previewContainer) {
+    var pendingComments = getPendingComments(null, gotPendingComments);
+    var previewEls = pendingComments.map(function (pendingComment) {
+      return addPendingCommentToDOM(previewContainer, pendingComment);
+    });
+    function gotPendingComments(verifiedPending) {
+      // No we've checked with the server which of the comments are
+      // still pending we should remove any that aren't
+      pendingComments.forEach(function (pendingComment, index) {
+        if (verifiedPending.indexOf(pendingComment) === -1) {
+          previewEls[index].parentNode.removeChild(previewEls[index]);
+        }
+      });
+    }
+  }
+
 
   // If a pending comments container is present then fill it with any pending comments we've stored
   function onDocumentReady() {
     var previewContainer = document.querySelector('[data-hubbub-pendingcomments]');
     if (previewContainer) {
-      getPendingComments(null, gotPendingComments);
-    }
-    function gotPendingComments(pendingComments) {
-      pendingComments.forEach(function (pendingComment) {
-        addPendingCommentToDOM(previewContainer, pendingComment.html);
-      });
+      showPendingComments(previewContainer);
     }
   }
   document.addEventListener('DOMContentLoaded', onDocumentReady);
@@ -211,6 +279,7 @@
   hubbub.defaults = defaults;
   hubbub.sendComment = sendComment;
   hubbub.sendForm = sendForm;
+  hubbub.addPendingCommentToDOM = addPendingCommentToDOM;
 
   hubbub.storePendingComment = storePendingComment;
   hubbub.getPendingComments = getPendingComments;
