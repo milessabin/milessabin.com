@@ -50,4 +50,16 @@ This is a comment ...
 <!--- END COMMENT 62da533e605a051d00deb9299392741f837771d7 -->
 
 
+<!--- START COMMENT f7f1cb20ea00f871cf172646e26639f918ee2d52 -->
+
+##### Foo -- Wed, 30th Dec 2015, 1:32pm GMT
+Blah, blah ...
+
+---
+
+
+<!--- END COMMENT f7f1cb20ea00f871cf172646e26639f918ee2d52 -->
+
+
+
 
