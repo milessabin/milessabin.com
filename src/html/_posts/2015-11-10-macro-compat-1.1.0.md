@@ -61,5 +61,17 @@ Blah, blah ...
 <!--- END COMMENT f7f1cb20ea00f871cf172646e26639f918ee2d52 -->
 
 
+<!--- START COMMENT 3d67fca574b7355fbe18d2a329c4d53f876384c0 -->
+
+##### Foo -- Wed, 30th Dec 2015, 1:35pm GMT
+Blah ...
+
+---
+
+
+<!--- END COMMENT 3d67fca574b7355fbe18d2a329c4d53f876384c0 -->
+
+
+
 
 
