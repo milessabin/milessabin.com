@@ -27,3 +27,15 @@ These release notes provide a summary of changes since macro-compat 1.0.7.
 
 Many thanks to everyone who has contributed ideas, enthusiasm and encouragement.
 
+
+<!--- START COMMENT ff82b4d2ce622d200c1c85c081949628bbc3174f -->
+
+##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Thu, 31st Dec 2015, 1:45pm GMT
+Foo ...
+
+---
+
+
+<!--- END COMMENT ff82b4d2ce622d200c1c85c081949628bbc3174f -->
+
+
