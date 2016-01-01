@@ -39,3 +39,15 @@ Foo ...
 <!--- END COMMENT 8b5b7630f748c852be3bf6875aa910983ace158d -->
 
 
+<!--- START COMMENT b5816892f19b5f0f13a27131fa12b507bd607aed -->
+
+##### Miles Sabin -- Fri, 1st Jan 2016, 1:24pm GMT
+Bar ...
+
+---
+
+
+<!--- END COMMENT b5816892f19b5f0f13a27131fa12b507bd607aed -->
+
+
+
