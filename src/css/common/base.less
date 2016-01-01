@@ -84,7 +84,16 @@ table {
 }
 
 h5:first-of-type {
-  margin-top: @line-height-computed * 2;
+  margin-top: @line-height-computed * 4;
+}
+
+h5:first-of-type:before {
+  content: "Comments";
+  position: relative;
+  float: right;
+  top: @line-height-computed * -3;
+  width: 100%;
+  .h3;
 }
 
 input.noLastPassStyle {
