@@ -50,4 +50,24 @@ Surely you want some "yada yada" in here too.
 <!--- END COMMENT cb995fe8e01c7ef5724847ba525a9e3f278fbde1 -->
 
 
+<!--- START COMMENT 058607b1f94e0d84dfb842b894e4e039a9d2d4cd -->
+
+#####  <a href="http://richard.dallaway.com">Richard tester</a> (<a href="https://twitter.com/d6y">@d6y</a>) -- Sat, 2nd Jan 2016, 9:43am GMT
+Just wanted to try another comment.
+
+<script>alert('yo')!;</script>
+
+Can I write code in here?
+
+```
+let x = x
+```
+
+---
+
+
+<!--- END COMMENT 058607b1f94e0d84dfb842b894e4e039a9d2d4cd -->
+
+
+
 
