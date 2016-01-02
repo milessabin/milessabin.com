@@ -7,7 +7,6 @@ path = require 'path'
 module.exports = (grunt) ->
   minify = grunt.option('minify') ? false
 
-  grunt.loadNpmTasks "grunt-browserify"
   grunt.loadNpmTasks "grunt-contrib-connect"
   grunt.loadNpmTasks "grunt-contrib-copy"
   grunt.loadNpmTasks "grunt-contrib-less"
@@ -34,21 +33,6 @@ module.exports = (grunt) ->
           "target/css/ie9.css"    : "src/css/ie9.less"
           "target/css/ie10.css"   : "src/css/ie10.less"
 
-    browserify:
-      site:
-        files:
-          "target/js/site.js" : "src/js/site.coffee"
-          "target/js/ie8.js"  : "src/js/ie8.coffee"
-        options:
-          watch: false
-          transform: if minify
-            [ 'coffeeify', [ 'uglifyify', { global: true } ] ]
-          else
-            [ 'coffeeify' ]
-          browserifyOptions:
-            debug: false
-            extensions: [ '.coffee' ]
-
     webfont:
       icons:
         src: "src/icons/*.svg"
@@ -69,6 +53,13 @@ module.exports = (grunt) ->
           cwd: "src/images"
           src: ["**"]
           dest: "target/images/"
+        }]
+      js:
+        files: [{
+          expand: true
+          cwd: "src/js"
+          src: ["**"]
+          dest: "target/js/"
         }]
 
     exec:
@@ -99,7 +90,7 @@ module.exports = (grunt) ->
           "src/js/**/*"
         ]
         tasks: [
-          "browserify"
+          "copy"
           "exec:jekyllLocal"
         ]
       images:
@@ -132,7 +123,6 @@ module.exports = (grunt) ->
   grunt.registerTask "build:base", [
     "webfont"
     "less"
-    "browserify"
     "copy"
   ]
 

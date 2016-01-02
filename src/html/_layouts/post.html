@@ -27,6 +27,40 @@ layout: default
           {{ content }}
         </article>
 
+        <div data-hubbub-pendingcomments>
+        </div>
+
+        <form data-hubbub class="form-horizontal" action="http://hubbub.milessabin.com/api/default/comments">
+          <div class="form-group">
+            <div class="col-sm-3">
+              <label class="" for="metadata_name">name</label>
+              <input class="form-control noLastPassStyle" name="metadata_name" placeholder="Your Name">
+            </div>
+
+            <div class="col-sm-3">
+              <label class="" for="metadata_twitter">twitter</label>
+              <input class="form-control" name="metadata_twitter" placeholder="@yourhandle">
+            </div>
+
+            <div class="col-sm-6">
+              <label class="" for="metadata_url">url</label>
+              <input class="form-control" name="metadata_url" placeholder="http://yourlink.com/">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <textarea class="form-control" name="comment" placeholder="Your comment ... you can use Github flavoured Markdown ..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <input class="btn btn-primary pull-right submit" type="submit" value="Post comment">
+              <input class="btn btn-primary pull-right sending-status" type="submit" value="Posting ...">
+            </div>
+          </div>
+        </form>
       </section>
     </div>
   </div>
