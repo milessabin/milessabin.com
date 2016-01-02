@@ -39,3 +39,15 @@ Blah, blah ...
 <!--- END COMMENT cb319b09ab18413618987ff2ff7588663c32d1c1 -->
 
 
+<!--- START COMMENT cb995fe8e01c7ef5724847ba525a9e3f278fbde1 -->
+
+#####  <a href="http://richard.dallaway.com">Richard tester</a> (<a href="https://twitter.com/d6y">@d6y</a>) -- Sat, 2nd Jan 2016, 9:41am GMT
+Surely you want some "yada yada" in here too.
+
+---
+
+
+<!--- END COMMENT cb995fe8e01c7ef5724847ba525a9e3f278fbde1 -->
+
+
+
