@@ -452,3 +452,15 @@ the next part of this series.
 [apocalisp]: http://apocalisp.wordpress.com/2010/07/02/higher-rank-polymorphism-in-scala/
 [nattrans]: http://en.wikipedia.org/wiki/Natural_transformation
 [scalaz]: https://github.com/scalaz/scalaz/blob/master/core/src/main/scala/scalaz/Extras.scala#L8
+
+
+<!--- START COMMENT 3ad97e2e3b8fad33037e0a0d30bf1db3b1697785 -->
+
+#####  <a href="aravindh.io">aravindh</a> (<a href="https://twitter.com/hardvain">@hardvain</a>) -- Sun, 10th Jan 2016, 2:40am GMT
+Hi Miles, I thoroughly enjoyed reading the article. What about the last part of the series?
+
+---
+
+
+<!--- END COMMENT 3ad97e2e3b8fad33037e0a0d30bf1db3b1697785 -->
+
