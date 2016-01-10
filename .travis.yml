@@ -19,6 +19,7 @@ script:
     fi
 sudo: false
 cache:
+  - bundler
   directories:
     - node_modules
 env:
