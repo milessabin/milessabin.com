@@ -464,3 +464,15 @@ Hi Miles, I thoroughly enjoyed reading the article. What about the last part of 
 
 <!--- END COMMENT 3ad97e2e3b8fad33037e0a0d30bf1db3b1697785 -->
 
+
+<!--- START COMMENT 606b981cb3f044f75a67ee01aeb094fdd65bf57c -->
+
+##### Max -- Tue, 9th Feb 2016, 12:32am GMT
+Great article! I'm looking forward to the last part, too.
+
+---
+
+
+<!--- END COMMENT 606b981cb3f044f75a67ee01aeb094fdd65bf57c -->
+
+
