@@ -5,12 +5,12 @@ author:     Miles Sabin
 date:       '2016-02-15 12:00:00'
 ---
 
-Despite being binary compatible with macro-compat 1.1.0, this release represents a major overhaul of the underlying
-implementation and a significant extension to the breadth of the support for 2.11.x style macros on 2.10.x.
-<span class="break"></span>This has made it possible to fully support shapeless (as of version 2.3.0) with a single
-branch and no Scala version variant source. Given that shapeless contains some fairly large and sophisticated macros
-which exploit private internals of the macro API this is a significant milestone and suggests that macro-compat is
-ready for wider use.
+Despite being binary compatible with [macro-compat 1.1.0](https://github.com/milessabin/macro-compat), this release
+represents a major overhaul of the underlying implementation and a significant extension to the breadth of the support
+for 2.11.x style macros on 2.10.x. <span class="break"></span> This has made it possible to fully support shapeless
+(as of version 2.3.0) with a single branch and no Scala version variant source. Given that shapeless contains some
+fairly large and sophisticated macros which exploit private internals of the macro API this is a significant milestone
+and suggests that macro-compat is ready for wider use.
 
 I would especially like to thank [Dale Wijnand][@dwijnand] for his relentless efforts adding support for features
 required by shapeless, and [Chris Hodapp][@clhodapp] for his work on and inspiration in supporting access to macro
