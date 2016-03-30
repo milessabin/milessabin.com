@@ -476,3 +476,15 @@ Great article! I'm looking forward to the last part, too.
 <!--- END COMMENT 606b981cb3f044f75a67ee01aeb094fdd65bf57c -->
 
 
+<!--- START COMMENT 25113e6ef83ad878423bd1fbf1bb905fb1497a6b -->
+
+##### jvliwanag (<a href="https://twitter.com/jan247">@jan247</a>) -- Wed, 30th Mar 2016, 4:39pm BST
+Looks like 2016 is the year when at least one stumbles upon this article, thoroughly enjoys this, and sincerely hopes the third part does get written. ;)
+
+---
+
+
+<!--- END COMMENT 25113e6ef83ad878423bd1fbf1bb905fb1497a6b -->
+
+
+
