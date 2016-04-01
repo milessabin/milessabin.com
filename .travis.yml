@@ -18,9 +18,6 @@ script:
       grunt build ;
     fi
 sudo: false
-cache:
-  directories:
-    - node_modules
 env:
   global:
   - secure: bE0qcqYZhdRXNmQHrbDnzFDdvyqj930F9HVwimAefD9pfEO+LfPdzXKId4X5o9PdQIhEOL+xfL2tjtEpG4BiHn2rl0Cw1tt/UlwXJBU8M2JU622VPb0ldaQSe1R1I7MzEGWW4zyVVu4fJws5BjmNlrexETUZ79ifbHGxf0Nnd3s=
