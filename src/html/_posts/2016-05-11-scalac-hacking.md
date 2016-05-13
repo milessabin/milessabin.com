@@ -367,7 +367,7 @@ suspicion that this is a good area to explore for a fix. The line,
 Couldn't unify ?M[?A] with Int => Int
 ```
 
-is telling us that the type inferencer is failing to solve the type variables `M[_]` and `A` against the type
+is telling us that the type inferencer is failing to solve the type variables `M[t]` and `A` against the type
 `Int => Int` and bailing out at exactly the point where we added the `println`.
 
 ### Make your change
