@@ -63,7 +63,6 @@ Now we need to launch SBT ... it should be on your path. It will take a minute o
 
 ```
 miles@frege:scala (topic/pr-in-an-hour)$ sbt
-[info] Loading global plugins from /home/miles/.sbt/0.13/plugins
 [info] Loading project definition from /home/miles/tmp/scala/writeup/scala/project/project
 [info] Updating {file:/home/miles/tmp/scala/writeup/scala/project/project/}scala-build-build...
 [info] Resolving org.fusesource.jansi#jansi;1.4 ...
@@ -105,7 +104,7 @@ Error reading scala/tools/nsc/interpreter/jline/JLineConsoleReader$$anon$1.class
 
 towards the end. These can also be ignored.
 
-The whole process takes about 15 minutes on my laptop, and the output (excluding the SBT resolution messages, the
+The whole process takes about 5 minutes on my laptop, and the output (excluding the SBT resolution messages, the
 binary version warnings and the JLine related errors) looks like this,
 
 ```
@@ -146,11 +145,11 @@ binary version warnings and the JLine related errors) looks like this,
 /home/miles/tmp/scala/writeup/scala/build/quick/classes/junit...
 [warn] there were 21 deprecation warnings; re-run with -deprecation for details
 [warn] one warning found
-[success] Total time: 856 s, completed 11-May-2016 22:44:31
+[success] Total time: 233s, completed 11-May-2016 22:44:31
 > _
 ```
 
-Note that the 15 minutes is the build time from clean. Subsequent incremental builds will be much quicker.
+Note that the 5 minutes is the build time from clean. Subsequent incremental builds will be much quicker.
 
 ### Add a test case
 
@@ -196,7 +195,7 @@ Partest version:
 Compiler under test: $baseDir/compiler
 Scala version is:    Scala compiler version 2.12.0-20160407-215932-d6f66ec -- Copyright 2002-2016, LAMP/EPFL
 Scalac options are:
-Compilation Path:    /home/miles/tmp/scala/writeup/scala/target/test/it-classes:$baseDir/test:$baseDir/compiler:...
+Compilation Path:    /home/miles/tmp/scala/writeup/scala/target/test/it-classes:...
 Java binaries in:    /usr/java/jdk1.8.0_51/jre/bin
 Java runtime is:     Java HotSpot(TM) 64-Bit Server VM (build 25.51-b03, mixed mode)
 Java options are:    -Xmx1024M -Xms64M -XX:MaxPermSize=128M
@@ -241,24 +240,30 @@ partest --update-check \
 >
 ```
 
-Notice that we've run `partest` with the `--verbose` switch so that we can see the compiler error output &mdash;
-`partest` has quite a few useful options which are listed if you invoke it with the `--help` switch and it also has
-tab completion. Beware that it can be a little unforgiving, and if you invoke it with a non-existent file path it will
-start running the entire test suite which you will only be able to stop by hitting ctrl-C and restarting SBT.
+Notice that we've run `partest` with the `--verbose` switch so that we can see the compiler error output. If you
+invoke `partest` with the `--help` switch it will list quite a few useful options. It also has tab completion. Beware
+that it can be a little unforgiving: if you invoke it with a non-existent file path it will start running the entire
+test suite which you will only be able to stop by hitting ctrl-C and restarting SBT.
 
 The error is plain to see,
+
 ```
 no type parameters for method meh: (x: M[A])M[A] exist so that it can be applied to arguments (Int => Int)
 ```
-and if you're familiar with the problem you'll know that it's a direct reflection of the fact that when solving type
-variables the Scala compiler will only ever match types of the same kinds or arities. In this case we're hoping to
-match the type `Int => Int`, which desugars to `Function1[Int, Int]` against `M[t]` &mdash; the concrete type has an
-outer type constructor which has two type arguments whereas the type variable has a single type argument and the
-compiler won't line those up for us.
+
+If you're familiar with the way that SI-2712 manifests itself you'll know that it's a direct reflection of the fact
+that when inferring types to apply a polymorphic method the Scala compiler will only ever match types of the same
+kinds or arities. In this case we're hoping to match the type `Int => Int`, which desugars to `Function1[Int, Int]`,
+against `M[t]` &mdash; the concrete type has an outer type constructor which has two type arguments whereas the type
+variable has a single type argument and because of that the compiler won't line those up for us. The technical term
+for "lining up types" is _unification_. It's also helpful to thinking of the job the compiler is doing here as a
+solving an equation &mdash; solve for type variables `M[t]` and `A` such that `M[A]` is equal to `Function1[Int,
+Int]`. With that in mind, the error message above is comprehensible, even if we'd like the compiler to try a bit
+harder to find a solution.
 
 ### Explore with grep and println
 
-In my talk I traced back from the error message that we saw in the compiler output ("no type parameters for method")
+In my talk I traced back from the error message that we saw in the compiler output ("no type parameters for")
 by grepping for it in the compiler source tree until I eventually found myself [here][location] in the Scala
 typechecker,
 
@@ -279,13 +284,14 @@ def unifyFull(tpe: Type): Boolean = {
   tpe.dealiasWidenChain exists unifySpecific
 }
 ```
+
 If you would like a reconstruction of how that went please watch the [video][flatmap-talk] of the talk. Once there
 it's fairly easy to spot the condition which is failing &mdash; the problem is that the compiler is refusing to unify
 a type constructor with a type variable if the two have different numbers of type arguments, and you can see [right
-here][] where that check is happening.
+here][arity-check] where that check is happening.
 
-We can convice ourselves that this is the right place to be looking for a solution by instrumenting the code in the
-compiler with a `println`,
+We can convice ourselves that this is the right place to be looking for a solution by adding a `println` (if that
+makes you feel uncomfortable feel free to think of it as "instrumenting the compiler"),
 
 ```scala
 // typeArgs are the args of the type variable and tp.typeArgs are the args of the
@@ -293,36 +299,39 @@ compiler with a `println`,
 if(sameLength(typeArgs, tp.typeArgs)) {
   ...
 } else {
-  println(s"$this $tp")  // "this" is the enclosing object, ie. the type variable
+  // "this" is the enclosing object, which is the type variable ...
+  println(s"Couldn't unify $this with $tp")
   false
 }
 ```
-Before you save that change, make rerun the test with the tilde prefix so that we can see just how quickly the
-compiler will be recompiled,
+
+Before you save that change, rerun the test with the tilde prefix so that we can see just how quickly the compiler
+will be recompiled,
 
 ```
+...
 1. Waiting for source changes... (press enter to interrupt)
 [info] Packaging /home/miles/tmp/scala/writeup/scala/build/pack/lib/scala-partest-javaagent.jar ...
 [info] Done packaging.
 [info] Compiling 1 Scala source to /home/miles/tmp/scala/writeup/scala/build/quick/classes/reflect...
-Partest version:     
+Partest version:
 Compiler under test: $baseDir/compiler
 Scala version is:    Scala compiler version 2.12.0-20160407-215932-d6f66ec -- Copyright 2002-2016, LAMP/EPFL
-Scalac options are:  
-Compilation Path:    /home/miles/tmp/scala/writeup/scala/target/test/it-classes:$baseDir/test:$baseDir/compiler:...
+Scalac options are:
+Compilation Path:    /home/miles/tmp/scala/writeup/scala/target/test/it-classes:...
 Java binaries in:    /usr/java/jdk1.8.0_51/jre/bin
 Java runtime is:     Java HotSpot(TM) 64-Bit Server VM (build 25.51-b03, mixed mode)
 Java options are:    -Xmx1024M -Xms64M -XX:MaxPermSize=128M
 baseDir:             /home/miles/tmp/scala/writeup/scala/build/quick/classes
 sourceDir:           /home/miles/tmp/scala/writeup/scala/test/files
-    
+
 Selected 1 tests drawn from specified tests
 
 # starting 1 test in pos
 % scalac pos/t2712-1.scala
-?M[?A] Int => Int
-?M[?A] AnyRef
-?M[?A] Object
+Couldn't unify ?M[?A] with Int => Int
+Couldn't unify ?M[?A] with AnyRef
+Couldn't unify ?M[?A] with Object
 ...
 !! 1 - pos/t2712-1.scala                         [compilation failed]
 # 0/1 passed, 1 failed in pos
@@ -345,26 +354,125 @@ partest --update-check \
 [error] Failed tests:
 [error]         partest
 [error] (test/it:testOnly) sbt.TestsFailedException: Tests unsuccessful
-[error] Total time: 20 s, completed 12-May-2016 00:07:35
+[error] Total time: 8s, completed 12-May-2016 00:07:35
 ```
-Here you can see that SBT has recompiled the compiler and then used that to recompile our test case in a mere 20
+
+Here you can see that SBT has recompiled the compiler and then used that to recompile our test case in a mere 8
 seconds &mdash; this is several orders of magnitude quicker than I remember it being!
 
 We don't need to pay much attention to the details of the println debug output, but we can see that it confirms the
-suspicion that this is a good area to explore for a fix. The output,
+suspicion that this is a good area to explore for a fix. The line,
+
 ```
-?M[?A] Int => Int
+Couldn't unify ?M[?A] with Int => Int
 ```
+
 is telling us that the type inferencer is failing to solve the type variables `M[_]` and `A` against the type
 `Int => Int` and bailing out at exactly the point where we added the `println`.
 
 ### Make your change
 
-### Push and PR
+This is where we [draw the rest of the owl][rest-of-the-owl] &mdash; this post is about the mechanics of hacking on
+the compiler and it would take us too far afield to cover all the details of the fix. Nevertheless, the first cut at
+the fix was very much simpler than I had expected,
 
-### Publish locally while it's in the queue
+```scala
+def unifyFull(tpe: Type): Boolean = {
+  def unifySpecific(tp: Type) = {
+    if(sameLength(typeArgs, tp.typeArgs)) {
+      val lhs = if (isLowerBound) tp.typeArgs else typeArgs
+      val rhs = if (isLowerBound) typeArgs else tp.typeArgs
+      // This is a higher-kinded type var with same arity as tp.
+      // If so (see SI-7517), side effect: adds the type constructor itself as a bound.
+      isSubArgs(lhs, rhs, params, AnyDepth) && { addBound(tp.typeConstructor); true }
+    } else if(compareLengths(typeArgs, tp.typeArgs) <= 0) {
+      val (prefix, suffix) = tp.typeArgs.splitAt(tp.typeArgs.length-typeArgs.length)
+      val newSyms = typeArgs.map(_ => tp.typeSymbol.owner.
+        newTypeParameter(currentFreshNameCreator.newName("Unify$")) setInfo TypeBounds.empty)
+      val poly = PolyType(newSyms, appliedType(tp.typeConstructor, prefix ++ newSyms.map(_.tpeHK)))
+
+      val lhs = if (isLowerBound) suffix else typeArgs
+      val rhs = if (isLowerBound) typeArgs else suffix
+      // This is a higher-kinded type var with same arity as tp.
+      // If so (see SI-7517), side effect: adds the type constructor itself as a bound.
+      isSubArgs(lhs, rhs, params, AnyDepth) && { addBound(poly.typeConstructor); true }
+    } else
+      false
+  }
+  // The type with which we can successfully unify can be hidden
+  // behind singleton types and type aliases.
+  tpe.dealiasWidenChain exists unifySpecific
+}
+```
+
+If you compare with the original you'll see just three lines of significant changes. These lines implemenet the simple
+algorithm suggested by [Paul Chiusano][pchiusano] in [his comment][paul-comment] on the ticket,
+
+> Would it be any easier to just look for partial applications of existing type constructors in left-to-right order?
+> Haskell does roughly this (actually, type constructors are just curried, see below), it is tractable, and people
+> don't seem to have an issue with the limitation, though occasionally you do have to introduce a new type just to
+> flip the  order of some type parameters.
+
+In the code above this plays out as,
+
+```scala
+val (prefix, suffix) = tp.typeArgs.splitAt(tp.typeArgs.length-typeArgs.length)
+val newSyms = typeArgs.map(_ => tp.typeSymbol.owner.
+  newTypeParameter(currentFreshNameCreator.newName("Unify$")) setInfo TypeBounds.empty)
+val poly = PolyType(newSyms, appliedType(tp.typeConstructor, prefix ++ newSyms.map(_.tpeHK)))
+```
+
+We have too many type arguments in the concrete type, so we split off the excess on the left and do what is in effect
+create an anonymous type alias roughly equivalent `type Anon[t] = Int => t`. We can now express our original `Int =>
+Int` as `Fn[Int]`, and this has the right arity to line up with the type variables `M[t]` and `A`, so the unification
+can go through, solving `M[t]` as `Anon[t]` and `A` as `Int`.
+
+Simple as it is, this is enough to allow our test case to pass &mdash; let's try it now,
+
+```
+> partest test/files/pos/t2712-1.scala
+Picked up JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
+Partest version:
+Compiler under test: $baseDir/compiler
+Scala version is:    Scala compiler version 2.12.0-20160407-215932-d6f66ec -- Copyright 2002-2016, LAMP/EPFL
+Scalac options are:
+Compilation Path:    /home/miles/tmp/scala/writeup/scala/target/test/it-classes:...
+Java binaries in:    /usr/java/jdk1.8.0_51/jre/bin
+Java runtime is:     Java HotSpot(TM) 64-Bit Server VM (build 25.51-b03, mixed mode)
+Java options are:    -Xmx1024M -Xms64M -XX:MaxPermSize=128M
+baseDir:             /home/miles/tmp/scala/writeup/scala/build/quick/classes
+sourceDir:           /home/miles/tmp/scala/writeup/scala/test/files
+
+Selected 1 tests drawn from specified tests
+
+# starting 1 test in pos
+ok 1 - pos/t2712-1.scala
+
+[info] Passed: Total 1, Failed 0, Errors 0, Passed 1
+[success] Total time: 10 s, completed 13-May-2016 10:37:29
+> _
+```
+
+Success!
+
+### Push and PR &mdash; victory!
+
+Now that we have our fix, we commit, push back to our fork, and submit a [pull request][pr5108] to scala/scala and
+declare victory!
+
+Of course the devil is in the details and the eventual fix, after lots of review and assistance from Jason and others,
+is a little more elaborate. Even so the [end result][final-diff] isn't so very far from the first cut, and hopefully
+I've been able to convey that getting to this point for a not-trivial issue isn't impossibly out of reach.
+
+Who would have thought that the infamous SI-2712 would turn out to be such low hanging fruit! What other long
+standing supposedly intractable issues might succumb just as swifty? If you want to shape the future or Scala you try
+and find out.
 
 ### Acknowledgements
+
+[Adriaan][adriaanm], [Grzegorz][gkossakowski], [Jason][retronym], [Stefan][szeiger] and
+[Seth][SethTisue] deserve our deep gratitude for the fantastic work they've done on the SBT build. I belive that it's
+a game changer and will massively increase the amount of community involvement in developing the Scala compiler.
 
 [si2712]: https://issues.scala-lang.org/browse/SI-2712
 [pr5108]: https://github.com/scala/scala/pull/5102
@@ -372,24 +480,14 @@ is telling us that the type inferencer is failing to solve the type variables `M
 [flatmap]: http://2016.flatmap.no/
 [scala-scala]: https://github.com/scala/scala
 [location]: https://github.com/scala/scala/blob/d6f66ec0f38e42c19f79cbe9d32d29c65dee1e05/src/reflect/scala/reflect/internal/Types.scala#L3132-L3145
-
-<!--
-https://github.com/gkossakowski
-Grzegorz Kossakowski
-
-https://github.com/retronym
-Jason Zaugg
-
-https://github.com/szeiger
-Stefan Zeiger
-
-https://github.com/lrytz
-Lukas Rytz
-
-https://github.com/SethTisue
-SethTisue
-
-https://github.com/adriaanm
-Adriaan Moors
--->
-
+[arity-check]: https://github.com/scala/scala/blob/d6f66ec0f38e42c19f79cbe9d32d29c65dee1e05/src/reflect/scala/reflect/internal/Types.scala#L3134
+[rest-of-the-owl]: http://29.media.tumblr.com/tumblr_l7iwzq98rU1qa1c9eo1_500.jpg
+[pchiusano]: https://twitter.com/pchiusano
+[paul-comment]: https://issues.scala-lang.org/browse/SI-2712?focusedCommentId=61270
+[final-diff]: https://github.com/milessabin/scala/blob/141662307543603a8b3db44f8a2fc691688ed8f6/src/reflect/scala/reflect/internal/Types.scala#L3132-L3186
+[adriaanm]: https://github.com/adriaanm
+[gkossakowski]: https://github.com/gkossakowski
+[retronym]: https://github.com/retronym
+[lrytz]: https://github.com/lrytz
+[szeiger]: https://github.com/szeiger
+[SethTisue]: https://github.com/SethTisue
