@@ -13,17 +13,19 @@ time consuming process. I recall the edit (the compiler source), compile (the co
 compiled compiler to build a test source file) cycle taking 5-10 minutes. This made the sort of exploratory
 programming that a lot of us do when getting to know an unfamiliar codebase (you know what I mean, sprinkling
 `println`'s and seeing what happens) at best tedious if not completely impractical. I believe that the compiler team
-improved on this using Zinc (and, going further back fsc), but for a casual Sunday afternoon compiler hacker it was
-not at all obvious how to get these set up an operating effectively.
+improved on this using Zinc (and, going further back, fsc), but for a casual Sunday afternoon compiler hacker it was
+not at all obvious how to get these set up and operating effectively.
 
 But times have changed for the better. We now have an SBT based build that makes working with the compiler tree
-dramatically easier &mdash; on my fairly lightweight laptop I get an edit/compile/test cycle in the single digit
-seconds. It's hard to exaggerate just how much easier it is to make progress than it used to be!
+dramatically easier. On my laptop I get an edit/compile/test cycle in the single digit seconds &mdash; It's hard to
+exaggerate just how much easier it is to make progress than it used to be!
 
-I gave a rough outline of the trajectory of my fix for SI-2712 in [my talk][flatmap-talk] at [flatMap][flatmap] at the
-beginning of May, and I promised then that I would post a more detailed write up of the mechanics ... this is that
-post. Everything that follows is accurate as of the early May 2016 ... I'll update it if things change and if you spot
-anything which is out of date, please let me know.
+I gave a rough outline of the trajectory of my fix for SI-2712 in [my talk][flatmap-talk] at [flatMap(Oslo)][flatmap]
+at the beginning of May, and I promised then that I would post a more detailed write up of the mechanics ... this is
+that post. Everything that follows is accurate as of the early May 2016 &mdash; I'll update it if things change, and
+if you spot anything which is out of date, please let me know.
+
+Herewith the walkthrough ...
 
 ### Fork the compiler on github and clone
 
@@ -59,7 +61,7 @@ miles@frege:scala (topic/pr-in-an-hour)$ _
 
 ### Launch SBT
 
-Now we need to launch SBT ... it should be on your path. It will take a minute or two to get to the SBT REPL,
+Now launch SBT ... it should be on your path. It'll take a minute or two to get to the SBT REPL,
 
 ```
 miles@frege:scala (topic/pr-in-an-hour)$ sbt
@@ -85,8 +87,8 @@ miles@frege:scala (topic/pr-in-an-hour)$ sbt
 
 ### Compile!
 
-Before we start working, we need to compile the compiler. We're using SBT so this means executing the `compile` task.
-When you do you will see some SBT resolution messages and also some warnings of the form,
+Before we start working, we need to compile the compiler. We're using SBT so we execute the `compile` task.
+When we do we will see some SBT resolution messages and also some warnings of the form,
 
 ```
 [warn] Binary version (2.12.0-SNAPSHOT) for dependency org.scala-lang#scala-library;2.12.0-SNAPSHOT
@@ -160,11 +162,10 @@ tests, ie. things which we exect to _not_ compile (these live under `test/files/
 compiling successfully we also want to run and verify their output (these live under `test/files/run`). The tests can
 be either single `.scala` files or directories which can contain multiple `.scala`, `.java` and other files. If a
 particular Scala source file `foo.scala` should be compiled with non-default compiler flags, then these can specified
-in a correspondingly named `foo.flags` file ... we'll see an example later. For `neg` and `run` tests we also need a
-`.check` file which contains the expected output (compiler errors in the `neg` case, execution output in the `run`
-case) ... we'll see how to create that later.
+in a correspondingly named `foo.flags` file. For `neg` and `run` tests we also need a `.check` file which contains the
+expected output (compiler errors in the `neg` case, execution output in the `run` case).
 
-Let's use the example reported in the [SI-2712 ticket][si2712] ... create the file `test/files/pos/t2712-1.scala`
+Let's use the example reported in the [SI-2712 ticket][si2712]: create the file `test/files/pos/t2712-1.scala`
 containing the following,
 
 ```
@@ -173,9 +174,9 @@ object Test {
   meh{(x: Int) => x} // solves ?M = [X] Int => X and ?A = Int ...
 }
 ```
-We're adding this as a positive test, becuase we _want_ it to compile successfully. Notice the convention that when
+We're adding this as a positive test, becuase we want it to compile successfully. Notice the convention that when
 adding a test corresponding to a bug with a ticket number, the test source file is of the form `tNNNN.scala`. This
-isn't essential, but it will make Jason happy.
+isn't essential, but it will make [Jason][retronym] happy.
 
 ### Run partest
 
@@ -255,10 +256,10 @@ If you're familiar with the way that SI-2712 manifests itself you'll know that i
 that when inferring types to apply a polymorphic method the Scala compiler will only ever match types of the same
 kinds or arities. In this case we're hoping to match the type `Int => Int`, which desugars to `Function1[Int, Int]`,
 against `M[t]` &mdash; the concrete type has an outer type constructor which has two type arguments whereas the type
-variable has a single type argument and because of that the compiler won't line those up for us. The technical term
-for "lining up types" is _unification_. It's also helpful to thinking of the job the compiler is doing here as a
-solving an equation &mdash; solve for type variables `M[t]` and `A` such that `M[A]` is equal to `Function1[Int,
-Int]`. With that in mind, the error message above is comprehensible, even if we'd like the compiler to try a bit
+variable has a single type argument and because of that the compiler won't line those up for us (the technical term
+for "lining up types" is _unification_). It's also helpful to think of the job the compiler is doing here as a
+solving an equation &mdash; "solve for type variables `M[t]` and `A` such that `M[A]` is equal to `Function1[Int,
+Int]`". With that in mind, the error message above is comprehensible, even if we'd like the compiler to try a bit
 harder to find a solution.
 
 ### Explore with grep and println
@@ -306,7 +307,7 @@ if(sameLength(typeArgs, tp.typeArgs)) {
 ```
 
 Before you save that change, rerun the test with the tilde prefix so that we can see just how quickly the compiler
-will be recompiled,
+will be recompiled and the test rerun,
 
 ```
 ...
@@ -358,7 +359,7 @@ partest --update-check \
 ```
 
 Here you can see that SBT has recompiled the compiler and then used that to recompile our test case in a mere 8
-seconds &mdash; this is several orders of magnitude quicker than I remember it being!
+seconds &mdash; this is several orders of magnitude faster than I remember it being!
 
 We don't need to pay much attention to the details of the println debug output, but we can see that it confirms the
 suspicion that this is a good area to explore for a fix. The line,
@@ -373,8 +374,8 @@ is telling us that the type inferencer is failing to solve the type variables `M
 ### Make your change
 
 This is where we [draw the rest of the owl][rest-of-the-owl] &mdash; this post is about the mechanics of hacking on
-the compiler and it would take us too far afield to cover all the details of the fix. Nevertheless, the first cut at
-the fix was very much simpler than I had expected,
+the compiler and it would take us too far afield to cover all the details of the fix. Nevertheless, the first cut was
+very much simpler than I had expected,
 
 ```scala
 def unifyFull(tpe: Type): Boolean = {
@@ -405,7 +406,7 @@ def unifyFull(tpe: Type): Boolean = {
 }
 ```
 
-If you compare with the original you'll see just three lines of significant changes. These lines implemenet the simple
+If you compare with the original you'll see just three lines of significant changes. These lines implement the simple
 algorithm suggested by [Paul Chiusano][pchiusano] in [his comment][paul-comment] on the ticket,
 
 > Would it be any easier to just look for partial applications of existing type constructors in left-to-right order?
@@ -423,9 +424,9 @@ val poly = PolyType(newSyms, appliedType(tp.typeConstructor, prefix ++ newSyms.m
 ```
 
 We have too many type arguments in the concrete type, so we split off the excess on the left and do what is in effect
-create an anonymous type alias roughly equivalent `type Anon[t] = Int => t`. We can now express our original `Int =>
-Int` as `Fn[Int]`, and this has the right arity to line up with the type variables `M[t]` and `A`, so the unification
-can go through, solving `M[t]` as `Anon[t]` and `A` as `Int`.
+create an anonymous type alias roughly equivalent to `type Anon[t] = Int => t`. We can now express our original `Int
+=> Int` as `Fn[Int]`, and this has the right arity to line up with the type variables `M[t]` and `A`, so the
+unification can go through, solving `M[t]` as `Anon[t]` and `A` as `Int`.
 
 Simple as it is, this is enough to allow our test case to pass &mdash; let's try it now,
 
@@ -461,12 +462,13 @@ Now that we have our fix, we commit, push back to our fork, and submit a [pull r
 declare victory!
 
 Of course the devil is in the details and the eventual fix, after lots of review and assistance from Jason and others,
-is a little more elaborate. Even so the [end result][final-diff] isn't so very far from the first cut, and hopefully
-I've been able to convey that getting to this point for a not-trivial issue isn't impossibly out of reach.
+is a little more elaborate. Even so the [end result][final-diff] isn't so very far from the first cut &mdash; I hope
+I've been able to convey that getting to this point for a non-trivial issue isn't impossibly out of reach.
 
 Who would have thought that the infamous SI-2712 would turn out to be such low hanging fruit! What other long
-standing supposedly intractable issues might succumb just as swifty? If you want to shape the future or Scala you try
-and find out.
+standing supposedly intractable issues might succumb just as swifty?
+
+If you want to be a part of shaping the future of Scala you should try and find out!
 
 ### Acknowledgements
 
