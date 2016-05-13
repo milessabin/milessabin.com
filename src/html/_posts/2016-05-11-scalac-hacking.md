@@ -95,7 +95,7 @@ When we do we will see some SBT resolution messages and also some warnings of th
 [warn]  in org.scala-lang#scala-compiler;2.12.0-SNAPSHOT differs from Scala binary version in project (2.12.0-M4).
 ```
 
-these can be safely ignored. You might also see some errors relating to the JLine and the REPL,
+these can be safely ignored. You might also see some errors relating to JLine and the REPL,
 
 ```
 Error reading scala/tools/nsc/interpreter/jline/JLineHistory$JLineFileHistory$Entry$.class: null
