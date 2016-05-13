@@ -175,8 +175,7 @@ object Test {
 }
 ```
 We're adding this as a positive test, becuase we want it to compile successfully. Notice the convention that when
-adding a test corresponding to a bug with a ticket number, the test source file is of the form `tNNNN.scala`. This
-isn't essential, but it will make [Jason][retronym] happy.
+adding a test corresponding to a bug with a ticket number, the test source file is of the form `tNNNN.scala`.
 
 ### Run partest
 
