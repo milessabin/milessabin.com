@@ -465,7 +465,7 @@ is a little more elaborate. Even so the [end result][final-diff] isn't so very f
 I've been able to convey that getting to this point for a non-trivial issue isn't impossibly out of reach.
 
 Who would have thought that the infamous SI-2712 would turn out to be such low hanging fruit! What other long
-standing supposedly intractable issues might succumb just as swifty?
+standing supposedly intractable issues might succumb just as swiftly?
 
 If you want to be a part of shaping the future of Scala you should try and find out!
 
