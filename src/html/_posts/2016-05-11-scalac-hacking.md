@@ -290,8 +290,8 @@ it's fairly easy to spot the condition which is failing &mdash; the problem is t
 a type constructor with a type variable if the two have different numbers of type arguments, and you can see [right
 here][arity-check] where that check is happening.
 
-We can convice ourselves that this is the right place to be looking for a solution by adding a `println` (if that
-makes you feel uncomfortable feel free to think of it as "instrumenting the compiler"),
+We can convice ourselves that this is the right place to be looking for a solution by instrumenting the compiler, by
+which I mean ... adding a `println` ;-)
 
 ```scala
 // typeArgs are the args of the type variable and tp.typeArgs are the args of the
