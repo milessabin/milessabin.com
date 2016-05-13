@@ -22,8 +22,8 @@ exaggerate just how much easier it is to make progress than it used to be!
 
 I gave a rough outline of the trajectory of my fix for SI-2712 in [my talk][flatmap-talk] at [flatMap(Oslo)][flatmap]
 at the beginning of May, and I promised then that I would post a more detailed write up of the mechanics ... this is
-that post. Everything that follows is accurate as of the early May 2016 &mdash; I'll update it if things change, and
-if you spot anything which is out of date, please let me know.
+that post. Everything that follows is accurate as of early May 2016 &mdash; I'll update it if things change, and if
+you spot anything which is out of date, please let me know.
 
 Herewith the walkthrough ...
 
