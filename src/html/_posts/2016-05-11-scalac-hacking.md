@@ -405,7 +405,7 @@ def unifyFull(tpe: Type): Boolean = {
 }
 ```
 
-If you compare with the original you'll see just three lines of significant changes. These lines implement the simple
+If you compare with the original you'll see just six lines of significant changes. These lines implement the simple
 algorithm suggested by [Paul Chiusano][pchiusano] in [his comment][paul-comment] on the ticket,
 
 > Would it be any easier to just look for partial applications of existing type constructors in left-to-right order?
