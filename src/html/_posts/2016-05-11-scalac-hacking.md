@@ -422,10 +422,10 @@ val newSyms = typeArgs.map(_ => tp.typeSymbol.owner.
 val poly = PolyType(newSyms, appliedType(tp.typeConstructor, prefix ++ newSyms.map(_.tpeHK)))
 ```
 
-We have too many type arguments in the concrete type, so we split off the excess on the left and do what is in effect
-create an anonymous type alias roughly equivalent to `type Anon[t] = Int => t`. We can now express our original `Int
-=> Int` as `Fn[Int]`, and this has the right arity to line up with the type variables `M[t]` and `A`, so the
-unification can go through, solving `M[t]` as `Anon[t]` and `A` as `Int`.
+We have too many type arguments in the concrete type, so we split off the excess on the left and, in effect, create an
+anonymous type alias roughly equivalent to `type Anon[t] = Int => t`. We can now express our original `Int => Int` as
+`Fn[Int]`, and this has the right arity to line up with the type variables `M[t]` and `A`, so the unification can go
+through, solving `M[t]` as `Anon[t]` and `A` as `Int`.
 
 Simple as it is, this is enough to allow our test case to pass &mdash; let's try it now,
 
