@@ -168,7 +168,7 @@ expected output (compiler errors in the `neg` case, execution output in the `run
 Let's use the example reported in the [SI-2712 ticket][si2712]: create the file `test/files/pos/t2712-1.scala`
 containing the following,
 
-```
+```scala
 object Test {
   def meh[M[_], A](x: M[A]): M[A] = x
   meh{(x: Int) => x} // solves ?M = [X] Int => X and ?A = Int ...
