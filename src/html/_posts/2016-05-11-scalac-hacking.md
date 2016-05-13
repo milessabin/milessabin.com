@@ -158,7 +158,7 @@ Note that the 5 minutes is the build time from clean. Subsequent incremental bui
 The next thing to do is add a test case for the bug we want to fix, or the feature we want to add. There are several
 categories of test cases most of which live under `test/files`. The ones we're most likely to be interested in adding
 are positive tests, ie. things which we expect to compile successfully (these live under `test/files/pos`), negative
-tests, ie. things which we exect to _not_ compile (these live under `test/files/pos`) and tests which as well as
+tests, ie. things which we exect to _not_ compile (these live under `test/files/neg`) and tests which as well as
 compiling successfully we also want to run and verify their output (these live under `test/files/run`). The tests can
 be either single `.scala` files or directories which can contain multiple `.scala`, `.java` and other files. If a
 particular Scala source file `foo.scala` should be compiled with non-default compiler flags, then these can specified
