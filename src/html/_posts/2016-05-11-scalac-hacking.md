@@ -2,7 +2,7 @@
 layout:     post
 title:      Hacking on scalac &mdash; 0 to PR in an hour
 author:     Miles Sabin
-date:       '2016-05-11 12:00:00'
+date:       '2016-05-13 12:00:00'
 ---
 
 There were quite a few surprises along the way to the fix for [SI-2712][si2712] that I recently submitted as a [pull
@@ -472,7 +472,7 @@ If you want to be a part of shaping the future of Scala you should try and find 
 
 ### Acknowledgements
 
-[Adriaan][adriaanm], [Grzegorz][gkossakowski], [Jason][retronym], [Stefan][szeiger] and
+[Adriaan][adriaanm], [Grzegorz][gkossakowski], [Jason][retronym], [Lukas][lrytz], [Stefan][szeiger] and
 [Seth][SethTisue] deserve our deep gratitude for the fantastic work they've done on the SBT build. I belive that it's
 a game changer and will massively increase the amount of community involvement in developing the Scala compiler.
 
