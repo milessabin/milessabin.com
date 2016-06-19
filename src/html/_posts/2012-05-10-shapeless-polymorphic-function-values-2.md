@@ -487,4 +487,16 @@ Looks like 2016 is the year when at least one stumbles upon this article, thorou
 <!--- END COMMENT 25113e6ef83ad878423bd1fbf1bb905fb1497a6b -->
 
 
+<!--- START COMMENT fe05e582d1f69cd3fc1b76637e099505d3150695 -->
+
+##### phlee -- Wed, 15th Jun 2016, 4:55am BST
+Yeah, there must be something special about 2016 :-)  Just come across this article which is great help to me a beginner of the Shapeless library.  Looking forward to the last part too.
+
+---
+
+
+<!--- END COMMENT fe05e582d1f69cd3fc1b76637e099505d3150695 -->
+
+
+
 
