@@ -297,6 +297,27 @@ Miles, really well written and easy to follow.  Thanks
 <!--- END COMMENT cb9159a88836685a4d9ae4cd3dcb76da870f965c -->
 
 
+<!--- START COMMENT 9fdef479613a3a53b51076713ccdb249b86c59d2 -->
+
+##### Bart Jenkins (<a href="https://twitter.com/picoforge">@picoforge</a>) -- Thu, 14th Jul 2016, 2:50pm BST
+Excellent article - Really clear and easy to follow with no magical hand-waving! One thing, I think I see a typo:
+Under the section of Scala function types shouldn’t:
+```val stringSingletonFn = new Function1[String, Set[String]] {
+def apply(v: String): Int = Module.stringSingleton(v)
+}```
+be
+```val stringSingletonFn = new Function1[String, Set[String]] {
+def apply(v: String): Set[String] = Module.stringSingleton(v)
+}
+```
+
+---
+
+
+<!--- END COMMENT 9fdef479613a3a53b51076713ccdb249b86c59d2 -->
+
+
+
 
 
 
