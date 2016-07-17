@@ -315,3 +315,17 @@ Yeah this is one thing that makes Ceylon look very attractive. That and how it m
 
 <!--- END COMMENT 56d380943076c87d79eeca5ff8f95b37138e3d78 -->
 
+
+<!--- START COMMENT 7183a36f9bcee4f557c4c08ec5167ccfc5f729d7 -->
+
+##### Josh Cason -- Sun, 17th Jul 2016, 9:34pm BST
+This type safe metamodel also seems cool, though I don't understand it yet: http://ceylon-lang.org/documentation/tour/annotations#the_metamodel
+
+Anyway, very cool post! I learned a lot. 
+
+---
+
+
+<!--- END COMMENT 7183a36f9bcee4f557c4c08ec5167ccfc5f729d7 -->
+
+
