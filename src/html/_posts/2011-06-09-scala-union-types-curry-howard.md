@@ -303,3 +303,15 @@ Adriaan to make it directly accessible.
 [de-morgan]: http://en.wikipedia.org/wiki/De_Morgan%27s_laws
 [parametricity]: http://en.wikipedia.org/wiki/Parametricity
 [products]: http://james-iry.blogspot.com/2011/05/why-eager-languages-dont-have-products.html
+
+
+<!--- START COMMENT 56d380943076c87d79eeca5ff8f95b37138e3d78 -->
+
+##### Josh Cason -- Sun, 17th Jul 2016, 9:02pm BST
+Yeah this is one thing that makes Ceylon look very attractive. That and how it more directly handles nulls make it an attractive competitor. But it also seems like putting those things into Scala would not be so difficult. 
+
+---
+
+
+<!--- END COMMENT 56d380943076c87d79eeca5ff8f95b37138e3d78 -->
+
