@@ -487,4 +487,17 @@ Looks like 2016 is the year when at least one stumbles upon this article, thorou
 <!--- END COMMENT 25113e6ef83ad878423bd1fbf1bb905fb1497a6b -->
 
 
+<!--- START COMMENT 96506c1becc4140e2ea4ef2e017c411417b4216b -->
+
+##### makemeunsee -- Thu, 21st Jul 2016, 3:23pm BST
+great read, thanks for this series!
+Looking forward to the last one, too!
+
+---
+
+
+<!--- END COMMENT 96506c1becc4140e2ea4ef2e017c411417b4216b -->
+
+
+
 
