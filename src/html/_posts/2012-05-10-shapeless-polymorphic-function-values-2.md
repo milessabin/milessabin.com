@@ -487,4 +487,16 @@ Looks like 2016 is the year when at least one stumbles upon this article, thorou
 <!--- END COMMENT 25113e6ef83ad878423bd1fbf1bb905fb1497a6b -->
 
 
+<!--- START COMMENT 509d663dc2b013bf85b9c1bb99b43ae0a62edb9f -->
+
+##### Julien (<a href="https://twitter.com/julienmonnier">@julienmonnier</a>) -- Sun, 24th Jul 2016, 8:00pm BST
+Fantastic article.  I have often wondered what this ~> was all about, little I knew what powerful concepts it required to know to properly understand it.  This article gave all of those in one great post.  Thank you Miles
+
+---
+
+
+<!--- END COMMENT 509d663dc2b013bf85b9c1bb99b43ae0a62edb9f -->
+
+
+
 
