@@ -296,3 +296,15 @@ Miles, really well written and easy to follow.  Thanks
 
 <!--- END COMMENT cb9159a88836685a4d9ae4cd3dcb76da870f965c -->
 
+
+<!--- START COMMENT a8409184d7808fdeb0fea78863f353d3addccc94 -->
+
+#####  <a href="https://github.com/ikhoon">Ikhoon Eom</a> (<a href="https://twitter.com/2K00N">@2K00N</a>) -- Thu, 28th Jul 2016, 2:25pm BST
+Thank you. The article is well organized and understandable.
+
+---
+
+
+<!--- END COMMENT a8409184d7808fdeb0fea78863f353d3addccc94 -->
+
+
