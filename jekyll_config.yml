@@ -7,11 +7,11 @@ url                   : "http://milessabin.com"
 
 source                : src/html
 posts                 : _posts
-layouts               : _layouts
+layouts_dir           : _layouts
 includes              : _includes
 
 destination           : target
-plugins               : jekyll_plugins
+plugins_dir           : jekyll_plugins
 
 keep_files            : [ 'css', 'js', 'images', 'fonts' ]
 
@@ -21,18 +21,8 @@ paginate_path         : "blog/page:num/"
 excerpt_separator     : '<span class="break"></span>'
 
 safe                  : false
-highlighter           : pygments
+highlighter           : rouge
 
-markdown: redcarpet
-redcarpet:
-  extensions: [
-    "no_intra_emphasis",
-    "tables",
-    "fenced_code_blocks",
-    "autolink",
-    "strikethrough",
-    "lax_spacing",
-    "space_after_headers",
-    "superscript",
-    "smart"
-  ]
+markdown              : kramdown
+
+gems                  : [jekyll-paginate]
