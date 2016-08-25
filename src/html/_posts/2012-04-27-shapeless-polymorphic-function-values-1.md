@@ -296,3 +296,15 @@ Miles, really well written and easy to follow.  Thanks
 
 <!--- END COMMENT cb9159a88836685a4d9ae4cd3dcb76da870f965c -->
 
+
+<!--- START COMMENT 34e9a670862e0c7af9f70821cd9528af0d78dc46 -->
+
+##### Brandon Barker (<a href="https://twitter.com/b_barker">@b_barker</a>) -- Thu, 25th Aug 2016, 7:55pm BST
+Very enlightening article;  just getting into Shapeless and came across this, and I'm very glad I took a little time to read it.
+
+---
+
+
+<!--- END COMMENT 34e9a670862e0c7af9f70821cd9528af0d78dc46 -->
+
+
