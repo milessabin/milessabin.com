@@ -289,7 +289,7 @@ object size extends (Id ~> Const[Int]#λ) {
 }
 ```
 
-### Function-_like_?
+### Function-<i>like</i>?
 
 I've been careful to describe these things as "function-like" values rather than as functions to emphasize that they
 don't and can't conform to Scala's standard `FunctionN` types. The immediate upshot of this is that they can't be
