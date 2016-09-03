@@ -70,7 +70,7 @@ module.exports = (grunt) ->
       jekyllLive:
         cmd: "bundle exec jekyll build --trace --config jekyll_config.yml"
       deploy:
-        cmd: 'rsync -a --delete --exclude=".well-known" --exclude="scalatl" -e "ssh -q -i id_deploy -l <%= user %> -o StrictHostKeyChecking=no" target/ <%= destination %>'
+        cmd: 'rsync -a --delete --exclude=".well-known" -e "ssh -q -i id_deploy -l <%= user %> -o StrictHostKeyChecking=no" target/ <%= destination %>'
 
     watchImpl:
       options:
