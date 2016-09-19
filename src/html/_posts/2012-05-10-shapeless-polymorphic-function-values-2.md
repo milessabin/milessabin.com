@@ -487,15 +487,7 @@ Looks like 2016 is the year when at least one stumbles upon this article, thorou
 <!--- END COMMENT 25113e6ef83ad878423bd1fbf1bb905fb1497a6b -->
 
 
-<!--- START COMMENT 0f2b3b8d572d93beedd4c32e2fe4b0606562355d -->
 
-##### Bruce -- Mon, 19th Sep 2016, 10:16pm BST
-Part 3!  Part 3!  Part 3!
-
----
-
-
-<!--- END COMMENT 0f2b3b8d572d93beedd4c32e2fe4b0606562355d -->
 
 
 
