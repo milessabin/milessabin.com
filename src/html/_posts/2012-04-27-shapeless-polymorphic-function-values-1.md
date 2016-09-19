@@ -296,3 +296,15 @@ Miles, really well written and easy to follow.  Thanks
 
 <!--- END COMMENT cb9159a88836685a4d9ae4cd3dcb76da870f965c -->
 
+
+<!--- START COMMENT 2d2b29144eb809dd20e28a2997448718806acb97 -->
+
+##### Bruce Cota -- Mon, 19th Sep 2016, 9:33pm BST
+Very nice exposition.
+
+---
+
+
+<!--- END COMMENT 2d2b29144eb809dd20e28a2997448718806acb97 -->
+
+
