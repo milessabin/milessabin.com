@@ -487,4 +487,22 @@ Looks like 2016 is the year when at least one stumbles upon this article, thorou
 <!--- END COMMENT 25113e6ef83ad878423bd1fbf1bb905fb1497a6b -->
 
 
+<!--- START COMMENT a3f1f99e6d0f5b21495f45da3d97ecfd2c3f7eb8 -->
+
+##### Bruce -- Mon, 19th Sep 2016, 10:18pm BST
+Part 3! Part 3! Part 3! 
+
+This is worse than waiting for the 7th Harry Potter Book.
+
+---
+
+
+<!--- END COMMENT a3f1f99e6d0f5b21495f45da3d97ecfd2c3f7eb8 -->
+
+
+
+
+
+
+
 
