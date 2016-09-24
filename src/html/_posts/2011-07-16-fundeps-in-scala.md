@@ -253,3 +253,25 @@ of some stuff
 
 <!--- END COMMENT 3bb374bd91320c9a472b5672f8be0fa6cb195d2d -->
 
+
+<!--- START COMMENT 3011da7e2d3a07f6338af69629c6be3455380832 -->
+
+##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sat, 24th Sep 2016, 4:43pm BST
+<div class="comment-body" markdown="1">
+This is a comment with,
+```scala
+some
+more
+code
+```
+And a list of items,
++ one
++ two
++ three
+
+</div>
+
+
+<!--- END COMMENT 3011da7e2d3a07f6338af69629c6be3455380832 -->
+
+
