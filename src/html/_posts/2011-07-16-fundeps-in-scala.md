@@ -249,3 +249,21 @@ Blah, blah ...
 
 <!--- END COMMENT fd56e62f6efd12e3705de6a6e9e3e7f87ba4d603 -->
 
+
+<!--- START COMMENT 4b5668bc7517b5ae8f7d58029941340b300d66a2 -->
+
+<div markdown="1">
+##### Miles Sabin -- Sat, 24th Sep 2016, 3:23pm BST
+<div class="comment-body" markdown="1">
+This **is** a comment with [a link](http://milessabin.com) and some code,
+
+```scala
+def foo = "bar"
+```
+</div>
+</div>
+
+
+<!--- END COMMENT 4b5668bc7517b5ae8f7d58029941340b300d66a2 -->
+
+
