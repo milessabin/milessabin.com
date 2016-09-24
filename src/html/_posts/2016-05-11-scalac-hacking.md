@@ -492,3 +492,9 @@ a game changer and will massively increase the amount of community involvement i
 [lrytz]: https://github.com/lrytz
 [szeiger]: https://github.com/szeiger
 [SethTisue]: https://github.com/SethTisue
+
+{% include comment-header.html %}
+
+<!-- COMMENTS_END -->
+
+{% include comment-footer.html %}

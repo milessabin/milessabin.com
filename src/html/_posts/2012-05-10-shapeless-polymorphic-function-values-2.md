@@ -453,38 +453,44 @@ the next part of this series.
 [nattrans]: http://en.wikipedia.org/wiki/Natural_transformation
 [scalaz]: https://github.com/scalaz/scalaz/blob/master/core/src/main/scala/scalaz/Extras.scala#L8
 
+{% include comment-header.html %}
 
 <!--- START COMMENT 3ad97e2e3b8fad33037e0a0d30bf1db3b1697785 -->
 
-#####  <a href="aravindh.io">aravindh</a> (<a href="https://twitter.com/hardvain">@hardvain</a>) -- Sun, 10th Jan 2016, 2:40am GMT
+<div markdown="1">
+#####  <a href="http://aravindh.io">aravindh</a> (<a href="https://twitter.com/hardvain">@hardvain</a>) -- Sun, 10th Jan 2016, 2:40am GMT
+<div class="comment-body">
 Hi Miles, I thoroughly enjoyed reading the article. What about the last part of the series?
-
----
-
+</div>
+</div>
 
 <!--- END COMMENT 3ad97e2e3b8fad33037e0a0d30bf1db3b1697785 -->
 
 
 <!--- START COMMENT 606b981cb3f044f75a67ee01aeb094fdd65bf57c -->
 
+<div markdown="1">
 ##### Max -- Tue, 9th Feb 2016, 12:32am GMT
+<div class="comment-body">
 Great article! I'm looking forward to the last part, too.
-
----
-
+</div>
+</div>
 
 <!--- END COMMENT 606b981cb3f044f75a67ee01aeb094fdd65bf57c -->
 
 
 <!--- START COMMENT 25113e6ef83ad878423bd1fbf1bb905fb1497a6b -->
 
+<div markdown="1">
 ##### jvliwanag (<a href="https://twitter.com/jan247">@jan247</a>) -- Wed, 30th Mar 2016, 4:39pm BST
+<div class="comment-body">
 Looks like 2016 is the year when at least one stumbles upon this article, thoroughly enjoys this, and sincerely hopes the third part does get written. ;)
-
----
-
+</div>
+</div>
 
 <!--- END COMMENT 25113e6ef83ad878423bd1fbf1bb905fb1497a6b -->
 
 
+<!-- COMMENTS_END -->
 
+{% include comment-footer.html %}

@@ -5,14 +5,14 @@
   <header class="hero-text">
     <div class="container">
       {% if include.backLink %}
-        <h1>
+        <h1 class="blog-title">
           <a class="back-link" href="{{ include.backLink }}">
             {{ include.title }}
             <span class="icon-ms-back"></span>
           </a>
         </h1>
       {% else %}
-        <h1>{{ include.title }}</h1>
+        <h1 class="blog-title">{{ include.title }}</h1>
       {% endif %}
       {% if include.subtitle %}
       <p class="subtitle">

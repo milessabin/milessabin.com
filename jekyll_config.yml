@@ -25,4 +25,7 @@ highlighter           : rouge
 
 markdown              : kramdown
 
+kramdown:
+  auto_id_stripping: true
+
 gems                  : [jekyll-paginate]

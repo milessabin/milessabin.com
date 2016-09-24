@@ -285,14 +285,8 @@ In the next article in this series I'll start explaining how we can get the best
 [shapeless]: https://github.com/milessabin/shapeless
 [function1]: http://www.scala-lang.org/api/current/index.html#scala.Function1
 
+{% include comment-header.html %}
 
-<!--- START COMMENT cb9159a88836685a4d9ae4cd3dcb76da870f965c -->
+<!-- COMMENTS_END -->
 
-##### Armin Keyvanloo -- Wed, 6th Jul 2016, 11:20pm BST
-Miles, really well written and easy to follow.  Thanks 
-
----
-
-
-<!--- END COMMENT cb9159a88836685a4d9ae4cd3dcb76da870f965c -->
-
+{% include comment-footer.html %}
