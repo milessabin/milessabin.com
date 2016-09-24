@@ -239,21 +239,6 @@ impossible nor useless.
 
 
 
-<!--- START COMMENT 4b5668bc7517b5ae8f7d58029941340b300d66a2 -->
-
-<div markdown="1">
-##### Miles Sabin -- Sat, 24th Sep 2016, 3:23pm BST
-<div class="comment-body" markdown="1">
-This **is** a comment with [a link](http://milessabin.com) and some code,
-
-```scala
-def foo = "bar"
-```
-</div>
-</div>
-
-
-<!--- END COMMENT 4b5668bc7517b5ae8f7d58029941340b300d66a2 -->
 
 
 <!--- START COMMENT f5cdfc9b207ee0c63877598f3f94656df5833a51 -->
@@ -267,6 +252,7 @@ Wibble ...
 
 
 <!--- END COMMENT f5cdfc9b207ee0c63877598f3f94656df5833a51 -->
+
 
 
 
