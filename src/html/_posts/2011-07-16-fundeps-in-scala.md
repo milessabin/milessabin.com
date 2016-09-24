@@ -235,3 +235,21 @@ impossible nor useless.
 [cbf]: http://www.scala-lang.org/api/current/index.html#scala.collection.generic.CanBuildFrom
 [tcoi]: http://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf
 [travlike]: http://www.scala-lang.org/api/current/index.html#scala.collection.TraversableLike
+
+
+<!--- START COMMENT 3bb374bd91320c9a472b5672f8be0fa6cb195d2d -->
+
+##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sat, 24th Sep 2016, 4:42pm BST
+<div class="comment-body" markdown="1">
+This is a comment with a [link](#blah) and some code,
+```scala
+def foo = "bar"
+```
+#### and a heading
+
+of some stuff
+</div>
+
+
+<!--- END COMMENT 3bb374bd91320c9a472b5672f8be0fa6cb195d2d -->
+
