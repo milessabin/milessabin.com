@@ -237,15 +237,5 @@ impossible nor useless.
 [travlike]: http://www.scala-lang.org/api/current/index.html#scala.collection.TraversableLike
 
 
-<!--- START COMMENT 344d8b1e0c54bda7a39a01aea871b6bdedebfaa8 -->
 
-<div markdown="1">
-##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sat, 24th Sep 2016, 2:56pm BST
-<div class="comment-body" markdown="1">
-This sucks!
-</div>
-</div>
-
-
-<!--- END COMMENT 344d8b1e0c54bda7a39a01aea871b6bdedebfaa8 -->
 
