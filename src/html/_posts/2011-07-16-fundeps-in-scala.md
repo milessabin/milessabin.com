@@ -235,3 +235,17 @@ impossible nor useless.
 [cbf]: http://www.scala-lang.org/api/current/index.html#scala.collection.generic.CanBuildFrom
 [tcoi]: http://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf
 [travlike]: http://www.scala-lang.org/api/current/index.html#scala.collection.TraversableLike
+
+
+<!--- START COMMENT fd56e62f6efd12e3705de6a6e9e3e7f87ba4d603 -->
+
+<div markdown="1">
+##### Miles Sabin -- Sat, 24th Sep 2016, 3:06pm BST
+<div class="comment-body" markdown="1">
+Blah, blah ...
+</div>
+</div>
+
+
+<!--- END COMMENT fd56e62f6efd12e3705de6a6e9e3e7f87ba4d603 -->
+
