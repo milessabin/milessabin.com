@@ -237,17 +237,6 @@ impossible nor useless.
 [travlike]: http://www.scala-lang.org/api/current/index.html#scala.collection.TraversableLike
 
 
-<!--- START COMMENT fd56e62f6efd12e3705de6a6e9e3e7f87ba4d603 -->
-
-<div markdown="1">
-##### Miles Sabin -- Sat, 24th Sep 2016, 3:06pm BST
-<div class="comment-body" markdown="1">
-Blah, blah ...
-</div>
-</div>
-
-
-<!--- END COMMENT fd56e62f6efd12e3705de6a6e9e3e7f87ba4d603 -->
 
 
 <!--- START COMMENT 4b5668bc7517b5ae8f7d58029941340b300d66a2 -->
@@ -278,6 +267,7 @@ Wibble ...
 
 
 <!--- END COMMENT f5cdfc9b207ee0c63877598f3f94656df5833a51 -->
+
 
 
 
