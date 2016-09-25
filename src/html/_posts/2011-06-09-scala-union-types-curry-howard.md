@@ -306,6 +306,7 @@ Adriaan to make it directly accessible.
 
 {% include comment-header.html %}
 
+<div markdown="1">
 ##### Max Bolingbroke (<a href="https://twitter.com/mbolingbroke">@mbolingbroke</a>) -- Thu, 9th Jun 2011, 3:58pm GMT
 <div class="comment-body" markdown="1">
 Coming from Haskell I was a bit confused about how Scala was type checking your "match" statement, until I realised
@@ -326,7 +327,9 @@ match is inaccessible.
 one that is represented as a heap value. This Scala code clearly still represents `(Foo ∨ Bar)` as a heap value,
 though it does avoid the extra layer of indirection imposed by `Either`.)
 </div>
+</div>
 
+<div markdown="1">
 ##### Heiko Seeberger (<a href="https://twitter.com/hseeberger">@hseeberger</a>) -- Thu, 9th Jun 2011, 6:03pm GMT
 <div class="comment-body" markdown="1">
 Miles,
@@ -345,7 +348,9 @@ Cheers,
 
 Heiko
 </div>
+</div>
 
+<div markdown="1">
 ##### Ray Racine -- Thu, 9th Jun 2011, 6:24pm GMT
 <div class="comment-body" markdown="1">
 Interesting that Racket, generally considered a typeless scheme, has Union types.
@@ -366,7 +371,9 @@ Interesting that Racket, generally considered a typeless scheme, has Union types
 ```
 
 </div>
+</div>
 
+<div markdown="1">
 ##### Ittay Dror (<a href="https://twitter.com/ittayd">@ittayd</a>) -- Thu, 9th Jun 2011, 7:13pm GMT
 <div class="comment-body" markdown="1">
 This post is awesome, probably one of the best I've read. Both the result, the way and the explanation.
@@ -376,7 +383,9 @@ type in the body of the function and is also more easily extensible to more than
 
 Again, blown away.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Fri, 10th Jun 2011, 10:45am GMT
 <div class="comment-body" markdown="1">
 **@hseeberger**
@@ -394,7 +403,9 @@ def string[T](s : T)(implicit ev : T =:= String) = s.length
 So maybe this is a compiler bug? Or possibly there's some special-casing in the compiler for `=:=` and `<:<`? Adriaan
 would know.
 </div>
+</div>
 
+<div markdown="1">
 ##### Mario Fusco (<a href="https://twitter.com/mariofusco">@mariofusco</a>) -- Fri, 10th Jun 2011, 10:34am GMT
 <div class="comment-body" markdown="1">
 Really an awesome and especially inspiring post!
@@ -426,7 +437,9 @@ case s: String => s
 
 Any idea on what's wrong here?
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Fri, 10th Jun 2011, 10:38am GMT
 <div class="comment-body" markdown="1">
 **@mariofusco**
@@ -434,7 +447,9 @@ Any idea on what's wrong here?
 T will have been inferred as Int in the second parameter block, so the String case is correctly rejected by the
 compiler as never applicable.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Fri, 10th Jun 2011, 10:53am GMT
 <div class="comment-body" markdown="1">
 **@mbolingbroke**
@@ -449,13 +464,17 @@ And actually, this construction is perfectly compatible with Scala's specializat
 the `T` type parameter of the size method for `Int` you would have a completely unboxed representation for the `Int`
 case.
 </div>
+</div>
 
+<div markdown="1">
 ##### Mario Fusco (<a href="https://twitter.com/mariofusco">@mariofusco</a>) -- Fri, 10th Jun 2011, 11:20am GMT
 <div class="comment-body" markdown="1">
 Thanks for your prompt reply Miles, now I see my mistake. Do you think there is a way to use union types as parameters
 of an higher order function as in my example? I cannot find how.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Fri, 10th Jun 2011, 11:58am GMT
 <div class="comment-body" markdown="1">
 **@mariofusco**
@@ -465,7 +484,9 @@ afraid it's not going to be possible to directly represent a function value with
 reason that it's not possible to directly represent a function value with a type parameter (ie. a polymorphic function
 value). I've got quite a lot more to say on this, so watch this space.
 </div>
+</div>
 
+<div markdown="1">
 ##### Ittay Dror (<a href="https://twitter.com/ittayd">@ittayd</a>) -- Fri, 10th Jun 2011, 1:29pm GMT
 <div class="comment-body" markdown="1">
 **@milessabin**: About `Either`: Instead of making the argument of type `Either`, you can define that it is viewable
@@ -486,7 +507,9 @@ I think that if you invent your own type, say `Or[A, B]`, then the companion obj
 there's no need for the client to import anything. Furthermore, by using the `Or` (or `Either`) type you can store the
 parameter for later use.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Fri, 10th Jun 2011, 2:58pm GMT
 <div class="comment-body" markdown="1">
 **@ittayd**
@@ -494,7 +517,9 @@ parameter for later use.
 Yes, that works too. The principle of using phantom types (`Either` in your case) to impose type constraints on a base
 type is a very powerful one.
 </div>
+</div>
 
+<div markdown="1">
 ##### Mark Harrah -- Fri, 10th Jun 2011, 3:35pm GMT
 <div class="comment-body" markdown="1">
 Nice work and neat post.
@@ -507,25 +532,33 @@ compiler uses it to convert s to String in order to call `length`. As far as I k
 Related to `=:=` being implemented completely as library code, see the implementation of `Predef.conforms` for why I
 expect a bit more work is needed to actually make this solution less boxed than a solution based on `Either`.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Fri, 10th Jun 2011, 5:32pm GMT
 <div class="comment-body" markdown="1">
 Mark, try that in the REPL ... `s` does have a length member within the method body, despite `T` being unbounded and
 only being `=:=` String. I'm guessing there must be compiler magic here.
 </div>
+</div>
 
+<div markdown="1">
 ##### Mark Harrah -- Fri, 10th Jun 2011, 6:49pm GMT
 <div class="comment-body" markdown="1">
 I'm not saying it won't compile. It will, but that is because the compiler uses the implicit `=:=` instance to convert
 `T` to a `String` just like it would with any other implicit function parameter. Look at the generated bytecode and
 you can see it invokes `apply` on `ev`.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Fri, 10th Jun 2011, 8:59pm GMT
 <div class="comment-body" markdown="1">
 Mark, oh blimey ... yes of course.
 </div>
+</div>
 
+<div markdown="1">
 ##### <a href="http://lavadip.com">HRJ</a> -- Sat, 18th Jun 2011, 12:34pm GMT
 <div class="comment-body" markdown="1">
 Awesome.
@@ -533,14 +566,18 @@ Awesome.
 About @ittayd's [comment](#ittay-dror-ittayd--fri-10th-jun-2011-129pm-gmt), is the viewable construct amenable to
 specialisation too?
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sat, 18th Jun 2011, 12:47pm GMT
 <div class="comment-body" markdown="1">
 **@HRJ**
 
 Yes, a view bounded type variable will get along just fine with specialization.
 </div>
+</div>
 
+<div markdown="1">
 ##### Richard -- Wed, 13th Jul 2011, 12:45am GMT
 <div class="comment-body" markdown="1">
 Using this union type, how would one declare a variable, i.e., something like,
@@ -551,7 +588,9 @@ intOrString = "four"
 ```
 
 </div>
+</div>
 
+<div markdown="1">
 ##### Vlad Patryshev (<a href="https://twitter.com/vpatryshev">@vpatryshev</a>) -- Thu, 21st Jul 2011, 6:17am GMT
 <div class="comment-body" markdown="1">
 This is ingenious; I loved it a lot.
@@ -560,7 +599,9 @@ But wait, how come you throw in double negation into Curry-Howard isomorphism? D
 an intuitionist logic; so you cannot seriously count on using de Morgan laws. I believe. I could not find yet where's
 the error, but if Curry-Howard is correct, then there should be one, I think.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Thu, 21st Jul 2011, 9:11am GMT
 <div class="comment-body" markdown="1">
 **@Richard** There's not currently any way of expressing a union type as anything other than a context or view bound on a
@@ -579,7 +620,9 @@ Adriaan Moors github mirror of the Scala toolchain.
 That said, by the time this arrives in a released version of Scala we might have first class union types in the
 language anyway.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Thu, 21st Jul 2011, 9:20am GMT
 <div class="comment-body" markdown="1">
 **@vpatryshev** I agree that the Curry-Howard isomorphism is normally presented in an intuitionistic setting, but I
@@ -592,7 +635,9 @@ double negation encoding (though expressed very differently, using continuations
 
 I'd delighted if someone with more logical sophistication than me could shed some light on this.
 </div>
+</div>
 
+<div markdown="1">
 ##### Rex Kerr (<a href="https://twitter.com/_ichoran_">@_ichoran_</a>) -- Fri, 22nd Jul 2011, 9:57pm GMT
 <div class="comment-body" markdown="1">
 This is lovely, but I think your explanation emphasizes the isomorphism too much, or provides too limited of an
@@ -637,13 +682,17 @@ def g[A](a: A)(implicit ev: (Int with String) <:< A) = ...
 The Howard-Curry isomorphism encoding, although true, is something of a red herring because you cannot (AFAICT) encode
 type negation in a usable way, at least not easily.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sun, 24th Jul 2011, 10:04am GMT
 <div class="comment-body" markdown="1">
 Nice, but actually, what you've shown is that contravariance provides yet another mechanism for encoding negation in
 type systems with subtyping.
 </div>
+</div>
 
+<div markdown="1">
 ##### Seth Tisue (<a href="https://twitter.com/SethTisue">@SethTisue</a>) -- Wed, 3rd Aug 2011, 11:04pm GMT
 <div class="comment-body" markdown="1">
 Rex,
@@ -657,7 +706,9 @@ compiler, which defeats the purpose.
 
 Miles's code doesn't have this problem.
 </div>
+</div>
 
+<div markdown="1">
 ##### Rex Kerr (<a href="https://twitter.com/_ichoran_">@_ichoran_</a>) -- Sat, 13th Aug 2011, 5:58pm GMT
 <div class="comment-body" markdown="1">
 Seth,
@@ -669,7 +720,9 @@ So I retract my original comment: although the reason the code works is slightly
 double negation motivated by the HC isomorphism is key if you want a strict union type. Except as implemented it's not
 really negation but reverse implication.
 </div>
+</div>
 
+<div markdown="1">
 ##### Derek Wyatt (<a href="https://twitter.com/derekwyatt">@derekwyatt</a>) -- Thu, 18th Aug 2011, 1:31pm GMT
 <div class="comment-body" markdown="1">
 Interesting stuff, thanks.
@@ -679,25 +732,33 @@ union type we have to pattern match, and given overloading we have to dispatch d
 overloading allows for smaller functions, but perhaps unions provide an opportunity for exhaustive compiler checks on
 the pattern match (?)
 </div>
+</div>
 
+<div markdown="1">
 ##### Derek Wyatt (<a href="https://twitter.com/derekwyatt">@derekwyatt</a>) -- Thu, 18th Aug 2011, 2:15pm GMT
 <div class="comment-body" markdown="1">
 Oh hell, scratch that question... :) I was only thinking about implementation of decisions like "size" and the like
 but clearly it's got usages way beyond that that nobody else needs to describe since it should have been obvious.
 </div>
+</div>
 
+<div markdown="1">
 ##### A B -- Tue, 23rd Aug 2011, 2:29pm GMT
 <div class="comment-body" markdown="1">
 Is this still supposed to work when you use type union as generic parameters for collections? (Because it doesn't seem
 to work at all for me in Scala 2.9.....)
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Tue, 23rd Aug 2011, 4:18pm GMT
 <div class="comment-body" markdown="1">
 A B, This only works as a bound on a type parameter, so it's definition-site, rather than use site (the latter is what
 you're trying to do).
 </div>
+</div>
 
+<div markdown="1">
 ##### A B -- Tue, 23rd Aug 2011, 8:13pm GMT
 <div class="comment-body" markdown="1">
 **@milessabin** Does this mean that there is no way to achieve something like,
@@ -710,12 +771,16 @@ collec.add(7)
 
 ?
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Tue, 23rd Aug 2011, 9:11pm GMT
 <div class="comment-body" markdown="1">
 A B, No, I'm afraid not.
 </div>
+</div>
 
+<div markdown="1">
 ##### Ittay Dror (<a href="https://twitter.com/ittayd">@ittayd</a>) -- Tue, 13th Sep 2011, 4:04am GMT
 <div class="comment-body" markdown="1">
 **@milessabin** Is there a way of defining that `A` is not of a certain type? In particular, that `A` is not a
@@ -726,7 +791,9 @@ def foo[A, B, C](a: A)(implicit ev: ¬¬[A] <: C])
 ```
 
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Tue, 13th Sep 2011, 10:15am GMT
 <div class="comment-body" markdown="1">
 **@ittayd** Yes it is possible, but it takes a slightly different encoding of negation which really deserves a blog
@@ -757,7 +824,9 @@ val nfn3 = notFn((x : Int) => x+1)  // Does not compile
 
 Nb. as defined this only excludes functions of one argument.
 </div>
+</div>
 
+<div markdown="1">
 ##### Ittay Dror (<a href="https://twitter.com/ittayd">@ittayd</a>) -- Tue, 13th Sep 2011, 11:45am GMT
 <div class="comment-body" markdown="1">
 **@milessabin** This is the solution I eventually
@@ -765,7 +834,9 @@ Nb. as defined this only excludes functions of one argument.
 message is totally incomprehensible if someone is not familiar with the trick (unlike the "could not prove that..."
 message for missing implicits).
 </div>
+</div>
 
+<div markdown="1">
 ##### Shelby Moore III -- Sun, 18th Sep 2011, 9:09am GMT
 <div class="comment-body" markdown="1">
 I am thinking that the first class disjoint type is a sealed supertype, with the alternate subtypes, and implicit
@@ -809,14 +880,18 @@ res1: Int = 2
 One problem is Scala will not employ in case matching context, an implicit conversion from `IntOfIntOrString` to `Int`
 (and `StringOfIntOrString` to `String`), so must define extractors and use `case Int(i)` instead of `case i : Int`.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sun, 18th Sep 2011, 9:26am GMT
 <div class="comment-body" markdown="1">
 Shelby, maybe I'm missing something, but it looks like you've just replicated (a special case of) Scala's standard
 `Either` type -- ie. a boxed union type. The point of the article is to show that we can encode union types without
 any boxing.
 </div>
+</div>
 
+<div markdown="1">
 ##### Shelby Moore III -- Sun, 18th Sep 2011, 10:02am GMT
 <div class="comment-body" markdown="1">
 Maybe also I am missing something, but seems there are several improvements over `Either`,
@@ -829,13 +904,17 @@ Maybe also I am missing something, but seems there are several improvements over
 
 Perhaps it would be better to use `V` instead of `Or`, e.g. `IntVString`, or `Int |v| String`?
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sun, 18th Sep 2011, 10:11am GMT
 <div class="comment-body" markdown="1">
 Shelby, I'm afraid you're missing the point: the aim of this article is precisely to show the derivation of an unboxed
 union type -- anything else, however interesting it might be in it's own right, is off-topic.
 </div>
+</div>
 
+<div markdown="1">
 ##### Shelby Moore III -- Sun, 18th Sep 2011, 10:17am GMT
 <div class="comment-body" markdown="1">
 Okay apologies. In my mind, it is for all practical purposes an unboxed solution, because the boxing and unboxing is
@@ -843,7 +922,9 @@ implicit and maybe optimized away. But I can also appreciate your point, and the
 addition to the one I noted) lurking with my method? Thanks for accepting my comments in spite of them being off
 topic.
 </div>
+</div>
 
+<div markdown="1">
 ##### Lars Hupel (<a href="https://twitter.com/larsr_h">@larsr_h</a>) -- Mon, 14th Nov 2011, 5:31pm GMT
 <div class="comment-body" markdown="1">
 I was wondering whether one could generalize this to n-ary unions. Here's my first approach for n = 3,
@@ -872,12 +953,16 @@ implicitly[¬¬[Double] <:< T] // doesn't work
 ```
 
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Tue, 15th Nov 2011, 12:47am GMT
 <div class="comment-body" markdown="1">
 I like it ... nicely done.
 </div>
+</div>
 
+<div markdown="1">
 ##### Paolo G. Giarrusso (<a href="https://twitter.com/Blaisorblade">@Blaisorblade</a>) -- Sun, 5th Feb 2012, 2:17pm GMT
 <div class="comment-body" markdown="1">
 1. Just to understand the discussion with Rex Kerr -- this code seems to work without problems, and it seems that you
@@ -897,7 +982,9 @@ I like it ... nicely done.
    could be avoided if the compiler knew that `<:<` and `=:=` are just identities. Either we make them built-ins, or
    we introduce GHC's user-specified rewrite rules for optimization in Scala, too.
 </div>
+</div>
 
+<div markdown="1">
 ##### Paolo G. Giarrusso (<a href="https://twitter.com/Blaisorblade">@Blaisorblade</a>) -- Sun, 5th Feb 2012, 2:26pm GMT
 <div class="comment-body" markdown="1">
 A correction: actually `<:<` and `=:=` are just identities, but for slightly more complex reasons.  Given erasure of
@@ -905,7 +992,9 @@ generics, probably `<:<` and `=:=` are identity functions but some of their call
 (just as `l.get()` where `l: List[Int]` produces a cast to `Int`). Since the cast is in the caller, removing the
 function call _after the cast is inserted_ should be no problem.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sun, 5th Feb 2012, 2:38pm GMT
 <div class="comment-body" markdown="1">
 **@Blaisorblade**
@@ -918,7 +1007,9 @@ some of them. In practice I haven't found this to be a problem, but in general I
 Scala compiler isn't going to do as good a job of code generation for these kinds of things as languages like Agda
 which are designed from the ground up for this purpose.
 </div>
+</div>
 
+<div markdown="1">
 ##### Shelby Moore III -- Wed, 15th Feb 2012, 5:21pm GMT
 <div class="comment-body" markdown="1">
 Negation of the disjunction (i.e. all types not in the disjunction) employing Miles's ambiguity rule,
@@ -1021,13 +1112,17 @@ Note, I needed this for some dependently-typed kungfu where I statically type th
 statically (at compile-time) prevent duplicate operations (within each event handler function) on the state object
 hash map.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Thu, 16th Feb 2012, 1:02am GMT
 <div class="comment-body" markdown="1">
 Shelby, interesting looking stuff! You might also be interested in the (dependently typed) encoding of extensible
 records in shapeless.
 </div>
+</div>
 
+<div markdown="1">
 ##### Shelby Moore III -- Mon, 20th Feb 2012, 5:29pm GMT
 <div class="comment-body" markdown="1">
 **@milessabin** Thanks I will have a look. To eliminate `¬¬`,
@@ -1065,7 +1160,9 @@ error: could not find implicit value for parameter ev: <:<[Int with String,Doubl
            ^
 ```
 </div>
+</div>
 
+<div markdown="1">
 ##### Eduardo Pareja Tobes (<a href="https://twitter.com/eparejatobes">@eparejatobes</a>) -- Thu, 22nd Mar 2012, 4:59pm GMT
 <div class="comment-body" markdown="1">
 I don't see how,
@@ -1095,12 +1192,16 @@ implicitly[Int <%< ¬¬[Int]]
 
 Concerning `¬¬[T] <: T`, I don't see how you can get this.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Thu, 22nd Mar 2012, 5:30pm GMT
 <div class="comment-body" markdown="1">
 **@eparejatobes** I think all I need for isomorphism here is that `T <: U` iff `¬¬[T] <: ¬¬[U]` and that does hold.
 </div>
+</div>
 
+<div markdown="1">
 ##### Eduardo Pareja Tobes (<a href="https://twitter.com/eparejatobes">@eparejatobes</a>) -- Thu, 22nd Mar 2012, 6:37pm GMT
 <div class="comment-body" markdown="1">
 **@milessabin**
@@ -1125,7 +1226,9 @@ which (should) reduce to,
 
 because every monad in Poset is idempotent, and double negation is a monad.
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Thu, 22nd Mar 2012, 6:51pm GMT
 <div class="comment-body" markdown="1">
 **@eparejatobes** It looks to me as though you're asking for something much stronger than what I need here. In
@@ -1133,7 +1236,9 @@ particular, I don't think your reduction step is necessary. It would be if I was
 actually was negation (resp. double negation), but I'm not, and I don't think I need that for the purposes of this
 article.
 </div>
+</div>
 
+<div markdown="1">
 ##### Eduardo Pareja Tobes (<a href="https://twitter.com/eparejatobes">@eparejatobes</a>) -- Thu, 22nd Mar 2012, 7:52pm GMT
 <div class="comment-body" markdown="1">
 **@milessabin** of course you don't need any of this for the purpose of your (really nice!) article. I'm not saying
@@ -1146,7 +1251,9 @@ Anyway, I don't see how `T <: U` iff `¬¬[T] <: ¬¬[U]` holds; maybe it's just
 
 cheers
 </div>
+</div>
 
+<div markdown="1">
 ##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Thu, 22nd Mar 2012, 8:16pm GMT
 <div class="comment-body" markdown="1">
 **@eparejatobes** `¬¬[A]` is `(A => Nothing) => Nothing`, which is `Function1[Function1[A, Nothing], Nothing]`.
@@ -1155,6 +1262,7 @@ in `A`, hence if `A <: B` then `Function1[Function1[A, Nothing], Nothing] <: Fun
 Nothing]` so `¬¬[A] <: ¬¬[B]`.
 
 Going back the other way is an exercise left for the reader ;-)
+</div>
 </div>
 
 
