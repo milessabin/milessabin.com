@@ -211,6 +211,54 @@ around shapeless [here][typelevel]. Oh, and if you're going to be at Nescala the
 
 {% include comment-header.html %}
 
+<div markdown="1">
+##### Daniel Sobral (<a href="https://twitter.com/dcsobral">@dcsobral</a>) -- Fri, 27th Jan 2012, 4:25pm GMT
+<div class="comment-body" markdown="1">
+I’m speechless. ;-)
+
+There seems to be one bug: `ev : TM < H` on `object SelectLeast` — there's no `<` type defined anywhere.
+</div>
+</div>
+
+<div markdown="1">
+##### Kenji Yoshida (<a href="https://twitter.com/xuwei_k">@xuwei_k</a>) -- Fri, 27th Jan 2012, 4:57pm GMT
+<div class="comment-body" markdown="1">
+Very interesting post!
+
+But I think maybe this examples also possible using the [sing](https://github.com/okomok/sing/) library (sing is a
+Type-Level Metaprogramming Library).
+
+Similar examples in sing [here](https://github.com/okomok/sing/blob/0.1.0/src/test/scala/list/SortTest.scala) and
+[here](https://github.com/okomok/sing/blob/0.1.0/src/test/scala/list/IsSortedTest.scala).
+</div>
+</div>
+
+<div markdown="1">
+##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Fri, 27th Jan 2012, 6:50pm GMT
+<div class="comment-body" markdown="1">
+@dcsobral Yes, well spotted. Not actually a bug though ... you can find the definition of `LT[A, B]`
+[here](https://github.com/milessabin/shapeless/blob/master/core/src/main/scala/shapeless/ops/nat.scala#L133-L146).
+It’s very similar to the definition of `LTEq`.
+</div>
+</div>
+
+<div markdown="1">
+##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Fri, 27th Jan 2012, 6:55pm GMT
+<div class="comment-body" markdown="1">
+@xuwei_k Yes, you’re right, there are a lot of overlaps between shapeless and Sing. I think there are a lot of
+differences between the implementation techniques used however. Exploring ways that singleton types can be put to use
+even further is something that’s definitely on my agenda for shapeless.
+</div>
+</div>
+
+<div markdown="1">
+##### Alexander Lehmann -- Sat, 28th Jan 2012, 2:10pm GMT
+<div class="comment-body" markdown="1">
+That’s like Prolog taken to the next level. Thanks once again for another awesome post.
+</div>
+</div>
+
+
 <!-- COMMENTS_END -->
 
 {% include comment-footer.html %}
