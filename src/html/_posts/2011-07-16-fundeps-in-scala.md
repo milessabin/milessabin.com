@@ -238,6 +238,98 @@ impossible nor useless.
 
 {% include comment-header.html %}
 
+<div markdown="1">
+##### Lachlan O'Dea (<a href="https://twitter.com/quelgar">@quelgar</a>) -- Mon, 18th Jul 2011, 3:49am GMT
+<div class="comment-body" markdown="1">
+Another great post, thanks!
+</div>
+</div>
+
+<div markdown="1">
+##### Derek Wyatt (<a href="https://twitter.com/derekwyatt">@derekwyatt</a>) -- Tue, 19th Jul 2011, 8:59pm GMT
+<div class="comment-body" markdown="1">
+Really nice stuff. I thought, for a split second at the end of your post, that you wrote a book on Scala ... I was
+disappointed when I clued in :)
+
+Thanks a lot for the explanation.
+</div>
+</div>
+
+<div markdown="1">
+##### Sandipan Razzaque (<a href="https://twitter.com/srazzaque">@srazzaque</a>) -- Sun, 24th Jul 2011, 8:02am GMT
+<div class="comment-body" markdown="1">
+Great post! Thanks – just FYI I had to make the following change to the `MultDep` function in order to get it to
+compile (I’m using 2.9.0-1),
+
+```scala
+trait MultDep[-A, -B, C] extends Function2[A, B, C]
+```
+
+Still not 100% sure on the underlying mechanics of why this was needed (I’m still learning, need to read up more on
+Scala’s type system and variance I guess), but see [here](http://pastebin.com/4Kwm1EDv) for a working example.
+</div>
+</div>
+
+<div markdown="1">
+##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sun, 24th Jul 2011, 9:21am GMT
+<div class="comment-body" markdown="1">
+**@srazzaque** Thanks for the heads up — yes, it does appear that it works on Scala trunk (ie. later than 2.9.0-1),
+but that variance annotations are needed in the definition of `MultDep` for earlier versions. I’ve updated the post
+accordingly.
+</div>
+</div>
+
+<div markdown="1">
+##### Hugo Sereno Ferreira (<a href="https://twitter.com/ferreira_hugo">@ferreira_hugo</a>) -- Wed, 9th May 2012, 5:45pm GMT
+<div class="comment-body" markdown="1">
+Thank for your article, it was very elucidative on the subject. Although, I’m wondering if the example (Matrixes)
+clearly covers all the benefits in Functional Dependency. Couldn’t I achieve the same result through method
+overloading?
+
+```scala
+class ... {
+  def mult(a: Matrix, b: Matrix): Matrix = ...
+  def mult(a: Matrix, b: Vector): Vector = ...
+  def mult(a: Matrix, b: Int): Matrix = ...
+  def mult(a: Int, b: Matrix): Matrix = ...
+}
+```
+</div>
+</div>
+
+<div markdown="1">
+##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Thu, 10th May 2012, 1:57pm GMT
+<div class="comment-body" markdown="1">
+**@ferreira_hugo** You’re quite right ... see my comments starting "Of course, neither of these two examples are
+particularly exciting in Scala as they stand — Scala has Java-style overloading, which makes the matrix/vector/scalar
+example mostly redundant ..." and the discussion from there on.
+</div>
+</div>
+
+<div markdown="1">
+##### Rahul Goma Phulore (<a href="https://twitter.com/missingfaktor">@missingfaktor</a>) -- Sat, 23rd Jun 2012, 4:44pm GMT
+<div class="comment-body" markdown="1">
+Let’s consider the ExtractDep example. Here, we want `B` to not be a free type variable (as says
+[this page](http://www.haskell.org/haskellwiki/Functional_dependencies#Examples)). So I think, in Scala, it would be
+better to express it as an abstract type instead of as a type parameter. That IMO makes this "dependent type" intent
+more clear.
+
+```scala
+trait ExtractDep[A] {
+  type B
+  def apply(a : A) : B
+}
+
+implicit def ep[P, Q] = new ExtractDep[(P, Q)] {
+  type B = P
+  def apply(p : (P, Q)) : P = p._1
+}
+
+// etc
+```
+</div>
+</div>
+
 <!-- COMMENTS_END -->
 
 {% include comment-footer.html %}
