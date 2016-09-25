@@ -8,3 +8,5 @@ _theme_packages/*
 /target
 id_deploy
 travis-config.sh
+.bundle
+vendor

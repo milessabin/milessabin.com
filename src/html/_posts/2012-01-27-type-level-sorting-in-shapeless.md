@@ -208,3 +208,9 @@ around shapeless [here][typelevel]. Oh, and if you're going to be at Nescala the
 [prolog]: https://gist.github.com/1703501
 [sorting]: https://github.com/milessabin/shapeless/blob/master/examples/src/main/scala/shapeless/examples/sorting.scala
 [typelevel]: https://groups.google.com/forum/#!forum/typelevel
+
+{% include comment-header.html %}
+
+<!-- COMMENTS_END -->
+
+{% include comment-footer.html %}

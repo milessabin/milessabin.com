@@ -31,5 +31,13 @@
       ga('create', 'UA-62019891-1', 'auto');
       ga('send', 'pageview');
     </script>
+    <script src="{{ relative }}js/anchor.min.js"></script>
+    <script>
+      anchors.options = {
+        visible: 'always',
+        placement: 'left'
+      };
+      anchors.add().remove(".blog-title").remove(".blog-post-title");
+    </script>
   </body>
 </html>

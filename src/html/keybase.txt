@@ -1,0 +1,63 @@
+==================================================================
+https://keybase.io/milessabin
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://milessabin.com
+  * I am milessabin (https://keybase.io/milessabin) on keybase.
+  * I have a public key with fingerprint 87D4 DCA4 07A5 556C 0BAD  D01F 420D 4BEE 9FA4 7A44
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "012025a28a121b3bd551bd051dbafe69b8e6359a29ddea5040bcb922e39007b393520a",
+            "fingerprint": "87d4dca407a5556c0badd01f420d4bee9fa47a44",
+            "host": "keybase.io",
+            "key_id": "420d4bee9fa47a44",
+            "kid": "0111f50bd1b66fa01076a6a2acd9e3b0363c6deef13005a42dd16bd9b50f421ffc490a",
+            "uid": "eb69dadf6d798a10073b92f7e793a119",
+            "username": "milessabin"
+        },
+        "service": {
+            "hostname": "milessabin.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1469884322,
+    "expire_in": 157680000,
+    "prev": "19eb97695874e1a0f63f6082c105234a54171944aba035fa3efb7f480cff8a2a",
+    "seqno": 8,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owFtUj2LFEEUHNcP8ODAy4xEGgOR5e719/RiJGIimF6iLK+nX+8Otzezzsytnsul
+amhmcriJYChmIv4Djc38ASYKFwga2bN4kXbS9Ouq6qqiX2yezQZbtzbvfl+9fnL7
+zKdvPts9fvNhyXwdDtloyfZovdEsUNuN98rARgy4AKFR5MgF99IHrbkPoHnwGMk4
+n5OR2qFwIRBqUOAL74Qg6QCsl05qAciGLJbVhJp5U1Zdks1tUKFABRa11qYAjyEA
+j0pAUJ7IRVQWlUrEad32jGTOY0vbZZ1m6TBe2/sP/tQ351GDD9wbExE4WIMGBRbB
+kfQgjSxMIIpcAmhUIgRufHBeQzLBYyyUW/s+WMuRNy5giCZYl6pI0WRKGS1ZJ5Fz
+1wNbaircp4TeL2fUtujLih0NWZovyoL6avss/2C2i3o/8edN3dVFPUt3066bt6Oe
+2x3Oe/Aj8uO/MuPECKnLxFhQ05Z1xUY8IYuu7HW5Mi7PlRRiyOjxvGxoXPYIbU0O
+afXv0CJJckf3vbPG6dwq4gjRyGggFwUHLaRCrbjlTin0CFJHlBS9jSqHIsY8Fcn6
+ZA+rmo3y5BMnSbMtJxV2Bw2xo43nd85lW4PswvlB/8myjYuXTn/eYi9bPbiycyBW
+P1++94trx5c3P+fXb77NXrlfN76cnPz4+rR5dm9nenX5++O73T8=
+=pgML
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/milessabin
+
+==================================================================
+
