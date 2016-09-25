@@ -23,19 +23,30 @@ code {
   text-decoration: none;
 }
 
-a.continue-link {
-  text-decoration: none;
-  font-family: @font-family-sans-serif;
-  font-weight: 400;
-  font-size: @font-size-base * .9;
-}
-
 div.blog-post-content a {
   text-decoration: none;
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, @gray-light 2px, @gray-light 3px, rgba(0, 0, 0, 0) 3px);
   &:hover {
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, @text-color 2px, @text-color 3px, rgba(0, 0, 0, 0) 3px);
+  }
+}
+
+div.continue-link {
+  margin-top: -1em;
+  margin-bottom: 1em;
+  text-align: right;
+}
+
+a.continue-link {
+  font-family: @font-family-sans-serif;
+  font-size: @font-size-base * .75;
+  text-decoration: none;
+  color: @gray-light;
+  background-image: none !important;
+  &:hover {
+    color: @gray-darker;
+    background-image: none !important;
   }
 }
 
