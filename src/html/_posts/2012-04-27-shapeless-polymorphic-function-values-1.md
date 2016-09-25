@@ -287,6 +287,55 @@ In the next article in this series I'll start explaining how we can get the best
 
 {% include comment-header.html %}
 
+<div markdown="1">
+##### Heiko Seeberger (<a href="https://twitter.com/hseeberger">@hseeberger</a>) -- Sat, 28th Apr 2012, 10:39am GMT
+<div class="comment-body" markdown="1">
+Excellent introduction to Scala’s blend of OO and FP, one of the most important language features. Keep on the good work!
+</div>
+</div>
+
+<div markdown="1">
+##### Antonio Jr. -- Fri, 13th Jul 2012, 10:13pm GMT
+<div class="comment-body" markdown="1">
+Nice article. But maybe you can fix two listings,
+
+```scala
+val stringLengthFn = new Function1[String, List[String]] {
+  def apply(v : String) : Int = Module.stringLength(v)
+}
+```
+
+It should be `Module.stringSingleton(v)` and on,
+
+```scala
+scala> def singleton[T](t : T) = List(t)
+singleton: [T](t: T)List[T]
+
+scala> List(1, 2, 3) map singleton              // eta-expanded to Int => Set[Int]
+res0: List[Set[Int]] = List(Set(1), Set(2), Set(3))
+```
+
+It should be,
+
+```scala
+def singleton[T](t : T) = Set(t)
+```
+
+or else,
+
+```scala
+res0: List[List[Int]] = List(List(1), List(2), List(3)).
+```
+</div>
+</div>
+
+<div markdown="1">
+##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sat, 14th Jul 2012, 12:53pm GMT
+<div class="comment-body" markdown="1">
+**@Antonio** Good catch … thanks for letting me know.
+</div>
+</div>
+
 <!-- COMMENTS_END -->
 
 {% include comment-footer.html %}

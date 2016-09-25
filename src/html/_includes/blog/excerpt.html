@@ -4,8 +4,9 @@
   {% include blog/meta.html post=post %}
 
   <div class="blog-post-content">
-    {{ post.excerpt | markdownify }}
+    {{ post.excerpt }}
+
+    <div class="continue-link"><a class="continue-link" href="{{ post.url }}">&hellip; more &hellip;</a></div>
   </div>
 
-  <p><a class="continue-link" href="{{ post.url }}">Continue reading&hellip;</a></p>
 </article>

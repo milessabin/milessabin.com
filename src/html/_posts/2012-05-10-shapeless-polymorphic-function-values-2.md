@@ -455,11 +455,41 @@ the next part of this series.
 
 {% include comment-header.html %}
 
+<div markdown="1">
+##### Reuben Doetsch (<a href="https://twitter.com/reubendoetsch">@reubendoetsch</a>) -- Sun, 20th May 2012, 12:54am GMT
+<div class="comment-body" markdown="1">
+Great article and thank you. For the issues with matching on size, couldn’t a scalaz like type class be used (which
+defaults to 0 if no implicit conversion exists, either through type magic or creating a more generic implicit
+conversion from `Any` to the typeclass) I don’t know if this is possible and you are the scala type guru.
+</div>
+</div>
+
+<div markdown="1">
+##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sun, 20th May 2012, 12:56am GMT
+<div class="comment-body" markdown="1">
+You’re anticipating part three ... type classes are indeed a key part of the solution.
+</div>
+</div>
+
+<div markdown="1">
+##### Robbie Coleman (<a href="https://twitter.com/erraggy">@erraggy</a>) -- Fri, 16th May 2013, 10:30pm GMT
+<div class="comment-body" markdown="1">
+Is part three going to happen? I’m just desperately clinging to the cliff-hanger. :D
+</div>
+</div>
+
+<div markdown="1">
+##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sat, 5th Oct 2013, 3:08pm GMT
+<div class="comment-body" markdown="1">
+Yes, I’m afraid this is turning into a bit of a Duke Nukem Forever ... I’ll try to get to it soon.
+</div>
+</div>
+
 <!--- START COMMENT 3ad97e2e3b8fad33037e0a0d30bf1db3b1697785 -->
 
 <div markdown="1">
 #####  <a href="http://aravindh.io">aravindh</a> (<a href="https://twitter.com/hardvain">@hardvain</a>) -- Sun, 10th Jan 2016, 2:40am GMT
-<div class="comment-body">
+<div class="comment-body" markdown="1">
 Hi Miles, I thoroughly enjoyed reading the article. What about the last part of the series?
 </div>
 </div>
@@ -471,7 +501,7 @@ Hi Miles, I thoroughly enjoyed reading the article. What about the last part of 
 
 <div markdown="1">
 ##### Max -- Tue, 9th Feb 2016, 12:32am GMT
-<div class="comment-body">
+<div class="comment-body" markdown="1">
 Great article! I'm looking forward to the last part, too.
 </div>
 </div>
@@ -483,7 +513,7 @@ Great article! I'm looking forward to the last part, too.
 
 <div markdown="1">
 ##### jvliwanag (<a href="https://twitter.com/jan247">@jan247</a>) -- Wed, 30th Mar 2016, 4:39pm BST
-<div class="comment-body">
+<div class="comment-body" markdown="1">
 Looks like 2016 is the year when at least one stumbles upon this article, thoroughly enjoys this, and sincerely hopes the third part does get written. ;)
 </div>
 </div>
