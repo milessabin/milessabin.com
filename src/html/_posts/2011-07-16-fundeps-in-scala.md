@@ -237,20 +237,5 @@ impossible nor useless.
 [travlike]: http://www.scala-lang.org/api/current/index.html#scala.collection.TraversableLike
 
 
-<!--- START COMMENT 6624b8547872cb9deddb9aa7ef28338098ae0707 -->
 
-##### Miles Sabin (<a href="https://twitter.com/milessabin">@milessabin</a>) -- Sun, 25th Sep 2016, 11:28am BST
-<div class="comment-body" markdown="1">
-#### This is a heading
-
-A [link](#link), and some code,
-
-```scala
-def foo = "bar"
-println("wibble")
-```
-</div>
-
-
-<!--- END COMMENT 6624b8547872cb9deddb9aa7ef28338098ae0707 -->
 
