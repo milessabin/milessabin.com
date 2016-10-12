@@ -521,6 +521,8 @@ Looks like 2016 is the year when at least one stumbles upon this article, thorou
 <!--- END COMMENT 25113e6ef83ad878423bd1fbf1bb905fb1497a6b -->
 
 
-<!-- COMMENTS_END -->
+<!--
+COMMENTS_END
+-->
 
 {% include comment-footer.html %}

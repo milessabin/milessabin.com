@@ -336,6 +336,8 @@ res0: List[List[Int]] = List(List(1), List(2), List(3)).
 </div>
 </div>
 
-<!-- COMMENTS_END -->
+<!--
+COMMENTS_END
+-->
 
 {% include comment-footer.html %}
