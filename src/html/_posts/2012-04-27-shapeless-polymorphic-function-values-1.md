@@ -339,3 +339,19 @@ res0: List[List[Int]] = List(List(1), List(2), List(3)).
 <!-- COMMENTS_END -->
 
 {% include comment-footer.html %}
+
+
+<!--- START COMMENT 9ea040de41833c3726ac62f453b5149075db1773 -->
+
+##### Kevin Meredith (<a href="https://twitter.com/gentmen">@gentmen</a>) -- Wed, 12th Oct 2016, 3:32am BST
+<div class="comment-body" markdown="1">
+Is there a typo for:
+
+>def apply(v: String): Int
+
+where Int should be replaced with Set [String], no?
+</div>
+
+
+<!--- END COMMENT 9ea040de41833c3726ac62f453b5149075db1773 -->
+
