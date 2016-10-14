@@ -217,7 +217,7 @@ trait Function1[-T, +R] {
 }
 
 val stringSingletonFn = new Function1[String, Set[String]] {
-  def apply(v: String): Int = Module.stringSingleton(v)
+  def apply(v: String): Set[String] = Module.stringSingleton(v)
 }
 ```
  
