@@ -259,6 +259,8 @@ That’s like Prolog taken to the next level. Thanks once again for another awes
 </div>
 
 
-<!-- COMMENTS_END -->
+<!--
+COMMENTS_END
+-->
 
 {% include comment-footer.html %}

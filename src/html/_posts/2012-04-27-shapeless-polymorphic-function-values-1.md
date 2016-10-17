@@ -217,7 +217,7 @@ trait Function1[-T, +R] {
 }
 
 val stringSingletonFn = new Function1[String, Set[String]] {
-  def apply(v: String): Int = Module.stringSingleton(v)
+  def apply(v: String): Set[String] = Module.stringSingleton(v)
 }
 ```
  
@@ -336,6 +336,8 @@ res0: List[List[Int]] = List(List(1), List(2), List(3)).
 </div>
 </div>
 
-<!-- COMMENTS_END -->
+<!--
+COMMENTS_END
+-->
 
 {% include comment-footer.html %}

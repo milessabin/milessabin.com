@@ -330,6 +330,8 @@ implicit def ep[P, Q] = new ExtractDep[(P, Q)] {
 </div>
 </div>
 
-<!-- COMMENTS_END -->
+<!--
+COMMENTS_END
+-->
 
 {% include comment-footer.html %}

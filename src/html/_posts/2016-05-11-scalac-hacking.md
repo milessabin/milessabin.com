@@ -495,6 +495,8 @@ a game changer and will massively increase the amount of community involvement i
 
 {% include comment-header.html %}
 
-<!-- COMMENTS_END -->
+<!--
+COMMENTS_END
+-->
 
 {% include comment-footer.html %}
