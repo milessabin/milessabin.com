@@ -523,15 +523,6 @@ Looks like 2016 is the year when at least one stumbles upon this article, thorou
 
 
 
-<!--- START COMMENT bcf208c1df68cdbb395d414a0d198b1d8ad03165 -->
-
-#####  <a href="http://davegurnell.com">Dave Gurnell</a> (<a href="https://twitter.com/davegurnell">@davegurnell</a>) -- Wed, 19th Oct 2016, 10:16am BST
-<div class="comment-body" markdown="1">
-Test comment 3
-</div>
-
-
-<!--- END COMMENT bcf208c1df68cdbb395d414a0d198b1d8ad03165 -->
 
 
 
@@ -547,6 +538,7 @@ COMMENTS_END
 -->
 
 {% include comment-footer.html %}
+
 
 
 
