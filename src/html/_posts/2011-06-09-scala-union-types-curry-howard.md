@@ -1266,15 +1266,6 @@ Going back the other way is an exercise left for the reader ;-)
 </div>
 
 
-<!--- START COMMENT ccc623f1389ed1fb16be6aeb7d278533ee7f8712 -->
-
-##### Miles -- Sun, 23rd Oct 2016, 7:47pm BST
-<div class="comment-body" markdown="1">
-Blah
-</div>
-
-
-<!--- END COMMENT ccc623f1389ed1fb16be6aeb7d278533ee7f8712 -->
 
 
 
@@ -1292,6 +1283,7 @@ COMMENTS_END
 -->
 
 {% include comment-footer.html %}
+
 
 
 
