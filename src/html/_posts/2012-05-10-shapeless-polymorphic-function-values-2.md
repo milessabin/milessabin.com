@@ -521,15 +521,6 @@ Looks like 2016 is the year when at least one stumbles upon this article, thorou
 <!--- END COMMENT 25113e6ef83ad878423bd1fbf1bb905fb1497a6b -->
 
 
-<!--- START COMMENT bb91ea7f4466905fb80464faee5e7263e3d26a45 -->
-
-##### Miles -- Sun, 30th Oct 2016, 2:49pm GMT
-<div class="comment-body" markdown="1">
-Blah
-</div>
-
-
-<!--- END COMMENT bb91ea7f4466905fb80464faee5e7263e3d26a45 -->
 
 
 
@@ -544,5 +535,6 @@ COMMENTS_END
 -->
 
 {% include comment-footer.html %}
+
 
 
