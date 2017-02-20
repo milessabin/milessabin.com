@@ -337,6 +337,18 @@ res0: List[List[Int]] = List(List(1), List(2), List(3)).
 </div>
 
 
+<!--- START COMMENT 20849bda19562366d61ee40b0779281d66422359 -->
+
+#####  <a href="http://iuriisusuk.com">Iurii Susuk</a> (<a href="https://twitter.com/iuriisusuk">@iuriisusuk</a>) -- Mon, 20th Feb 2017, 4:23pm GMT
+<div class="comment-body" markdown="1">
+very nice explanation of why first class poly function values are not supported!
+</div>
+
+
+<!--- END COMMENT 20849bda19562366d61ee40b0779281d66422359 -->
+
+
+
 
 
 <!--
