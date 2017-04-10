@@ -521,6 +521,18 @@ Looks like 2016 is the year when at least one stumbles upon this article, thorou
 <!--- END COMMENT 25113e6ef83ad878423bd1fbf1bb905fb1497a6b -->
 
 
+<!--- START COMMENT a4c6f95f4dae007df3cb9bedd853a7b5c0b491b0 -->
+
+##### filippo (<a href="https://twitter.com/barambani">@barambani</a>) -- Mon, 10th Apr 2017, 8:41pm BST
+<div class="comment-body" markdown="1">
+This is one of the most inspiring serie of articles I have encountered so far. Any hopes to have the third one released ? Thanks
+</div>
+
+
+<!--- END COMMENT a4c6f95f4dae007df3cb9bedd853a7b5c0b491b0 -->
+
+
+
 
 
 
