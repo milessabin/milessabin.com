@@ -1266,6 +1266,20 @@ Going back the other way is an exercise left for the reader ;-)
 </div>
 
 
+<!--- START COMMENT e925db96d3afeead1ba437be1f1c5c675c0863cb -->
+
+##### John Sullivan (<a href="https://twitter.com/JohnnyLongevity">@JohnnyLongevity</a>) -- Mon, 8th May 2017, 6:47pm BST
+<div class="comment-body" markdown="1">
+My silly question for the day:
+Did this union type ever make it into shapeless or other typelevel library that I can use? If not, why not?
+I can't seem to find it in shapeless.
+</div>
+
+
+<!--- END COMMENT e925db96d3afeead1ba437be1f1c5c675c0863cb -->
+
+
+
 <!--
 COMMENTS_END
 -->
