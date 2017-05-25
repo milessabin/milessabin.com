@@ -279,12 +279,12 @@ second-class polymorphic methods, but we can't have first-class polymorphic func
 the standard Scala definitions. And yet it's first-class polymorphic function values that we need to map over an
 `HList` ... what to do?
 
-In the next article in this series I'll start explaining how we can get the best of both worlds ...
+In the [next] article in this series I'll start explaining how we can get the best of both worlds ...
 
 [hlist]: https://github.com/milessabin/shapeless/blob/master/core/src/main/scala/shapeless/hlists.scala
 [shapeless]: https://github.com/milessabin/shapeless
 [function1]: http://www.scala-lang.org/api/current/index.html#scala.Function1
-
+[next]: https://milessabin.com/blog/2012/05/10/shapeless-polymorphic-function-values-2/
 {% include comment-header.html %}
 
 <div markdown="1">
