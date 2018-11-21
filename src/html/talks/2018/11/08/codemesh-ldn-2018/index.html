@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Adding kind-polymorphism to Scala &mdash; Code Mesh 2018</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style type="text/css">
+    body {
+      font-family: 'Lato';
+    }
+    h1, h2, h3 {
+      font-weight: normal;
+    }
+    .remark-code, .remark-inline-code {
+      font-family: 'DejaVu Sans Mono';
+    }
+
+    .remark-slide-content {
+      background-repeat: no-repeat !important;
+    }
+    .typelevel {
+      background: #0E2C3C;
+      color: white;
+      font-size: 180%;
+    }
+    .typelevel a {
+      color: white;
+      text-decoration: none;
+    }
+    .red {
+      color: red;
+    }
+    .green {
+      color: green;
+    }
+    .typelevel h1 {
+      text-align: center;
+    }
+    .what-logo {
+      background-size: contain;
+      background-position: center;
+    }
+    .centered {
+      margin-top: 15%;
+    }
+    .text-centered {
+      margin-left: 22%;
+    }
+    .projects-centered {
+      margin-top: 10%;
+    }
+    .projects-centered table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .projects-centered tr {
+    }
+    .projects-centered td {
+      text-align: center;
+      font-size: 80%;
+      padding-top: 0.5em;
+    }
+    .centeredimg {
+      margin-top: 4%;
+    }
+    .summit h1 {
+      text-shadow: rgba(255,255,255,.1) -1px -1px 1px, rgba(0,0,0,.5) 1px 1px 1px;
+    }
+    .hack-the-tower h2 {
+      margin-top: 40vh;
+    }
+    .sponsors {
+      background: white;
+    }
+    .sponsors img {
+      max-height: 7vh;
+    }
+    .cats {
+      background: white;
+    }
+    .cats img {
+      height: 60vh;
+    }
+    .title > h1 {
+      margin-top: -5%;
+      font-size: 200%;
+    }
+    .title > h2 {
+      font-size: 150%;
+    }
+    .title > h3  {
+      font-size: 100%;
+    }
+    .title img {
+      margin-bottom: -20%;
+      height: 5em;
+    }
+    .exclaim h1 {
+      font-size: 600%
+    }
+    ol {
+      margin: 0;
+      padding: 0;
+      line-height: 60px;
+      list-style-type: none;
+    }
+    ul > li {
+      margin: 3% 0 3% 0;
+      padding: 0;
+    }
+    blockquote {
+      font-size: 200%;
+    }
+    .wide {
+      margin: 0;
+      padding: 0;
+    }
+    .hero {
+      background-image: url(img/hero-left-overlay-white.svg);
+      webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+  <textarea id="source">
+    name: inverse
+    layout: true
+    class: typelevel
+    ---
+    class: center, middle, hero
+
+    .title[
+      # Adding kind-polymorphism to Scala
+
+      ## Miles Sabin, [@milessabin](http://twitter.com/milessabin)
+
+      [![Typelevel logo](img/logo.svg)](http://typelevel.org)
+    ]
+
+    ---
+    class: center, middle
+
+    # What is kind polymorphism?
+
+    ---
+    # What is kind polymorphism?
+
+    It's a form of parametric polymorphism
+
+    ```
+    // Given ...
+    trait List[T]
+
+    // ... we can subsititute for T
+    List[Int]
+    List[String]
+    List[Boolean]
+    ```
+    ---
+    # What is kind polymorphism?
+
+    It's a form of parametric polymorphism
+
+    ```
+    // Given ...
+    trait List[`T`] // T is of kind *
+
+    // ... we can subsititute for T
+    List[Int]
+    List[String]
+    List[Boolean]
+    ```
+
+    We say type parameters of this sort are of _kind `*`_
+
+    ---
+    # What is kind polymorphism?
+
+    It's a form of parametric polymorphism
+
+    ```
+    // Given ...
+    trait Functor[F[_]]
+
+    // ... we can subsititute for F
+    Functor[List]
+    Functor[Option]
+    Functor[Vector]
+    ```
+    ---
+    # What is kind polymorphism?
+
+    It's a form of parametric polymorphism
+
+    ```
+    // Given ...
+    trait Functor[`F[_]`] // F is of kind *->*
+
+    // ... we can subsititute for F
+    Functor[List]
+    Functor[Option]
+    Functor[Vector]
+    ```
+
+    We say type parameters of this sort are of _kind `*->*`_
+
+    ---
+    # What is kind polymorphism?
+
+    It's a form of parametric polymorphism
+
+    ```
+    // Given ...
+    trait TypeTag[???]
+
+    // ... we want to subsititute
+    TypeTag[Int]  // argument of kind *
+    TypeTag[List] // argument of kind *->*
+    TypeTag[Map]  // argument of kind *->*->*
+    ```
+    ---
+    # What is kind polymorphism?
+
+    It's a form of parametric polymorphism
+
+    ```
+    // Given ...
+    trait TypeTag[`???`]
+
+    // ... we want to subsititute
+    TypeTag[`Int`]  // argument of kind *
+    TypeTag[`List`] // argument of kind *->*
+    TypeTag[`Map`]  // argument of kind *->*->*
+    ```
+
+    Can we substitute types of different kinds at the same position?
+
+    ---
+    # What is kind polymorphism?
+
+    Haskellers can do things like this with `-XPolyKinds`
+
+    ```
+    data Proxy t = Proxy
+
+    class Typeable t where
+    typeOf :: Proxy t -> TypeRep
+
+    instance Typeable Int  where typeOf _ = TypeRep
+    instance Typeable []   where typeOf _ = TypeRep
+    ```
+    ---
+    # What is kind polymorphism?
+
+    Haskellers can do things like this with `-XPolyKinds`
+
+    ```
+    data Proxy t = Proxy
+
+    class Typeable `t` where
+    typeOf :: Proxy t -> TypeRep
+
+    instance Typeable `Int`  where typeOf _ = TypeRep
+    instance Typeable `[]`   where typeOf _ = TypeRep
+    ```
+
+    Instances of `Typeable` for both `Int` (`*`) and `[]` (`*->*`)
+    ---
+    class: center, middle
+
+    # Why kind polymorphism?
+
+    ---
+    # Why kind polymorphism?
+
+    Boilerplate elimination
+
+    ```
+    data Proxy t = Proxy
+
+    class Typeable t where
+    typeOf :: Proxy t -> TypeRep
+
+
+
+
+    instance Typeable  Int  where typeOf _ = TypeRep
+    instance Typeable  []   where typeOf _ = TypeRep
+    ```
+    ---
+    # Why kind polymorphism?
+
+    Boilerplate elimination
+
+    ```
+
+
+    class Typeable (t :: *) where
+    typeOf :: t -> TypeRep
+
+    class Typeable1 (t :: * -> *) where
+      typeOf1 :: t a -> TypeRep
+
+    instance Typeable  Int  where typeOf _ = TypeRep
+    instance Typeable1 []   where typeOf _ = TypeRep
+    ```
+
+    Without kind polymorphism we need to manually duplicate definitions for each kind we want to support
+
+    ---
+    # Why kind polymorphism?
+
+    ClassTag, TypeTag
+
+      ```
+      typeOf[List[Any]] // Fully applied type, .typeConstructor to get List
+
+      typeOf[List[_]]   // An existential type
+
+      typeOf[List]      // What we really want
+      ```
+
+    shapeless has a `Typeable` similar to Haskell's
+
+    ---
+    # Why kind polymorphism?
+
+    Is that sufficiently compelling?
+
+    What's so bad about a bit of boilerplate?
+
+    --
+
+    For the examples so far, maybe not so much, and not a lot.
+
+    Let's try another example ...
+
+    ---
+    class: center, middle
+
+    # Generic programming with shapeless
+
+    ---
+    # Generic programming with shapeless
+
+    shapeless is a Scala generic programming library
+
+    It allows ADTs to be manipulated in a very general way
+
+    &mdash; compile time generic representation
+
+    &mdash; _not_ runtime reflection.
+
+    It does this mainly via normal, though "advanced", Scala code
+
+    &mdash; implicit induction, path dependent and singleton types
+
+    It has one very important Scala macro primitive ...
+    ---
+    # Generic programming with shapeless
+
+    `Generic` is a type class which for suitable types `G` defines
+      * a representation type `Repr`
+      * an operation `to` which maps a `G` to a `Repr` value
+      * an operation `from` which maps a `Repr` to a `G` value
+
+    ```
+    trait Generic[G] {
+      type Repr
+      def to(t: G): Repr
+      def from(t: Repr): G
+    }
+    ```
+    ---
+    # Generic programming with shapeless
+
+    An implicit macro provides instances of `Generic` when needed
+
+    shapeless provides a toolkit for manipulating the generic representation
+
+    ```
+    def concat[A: Generic, B: Generic, C: Generic](a: A, b: B): C =
+      Generic[C].from(Generic[A].to(a) ++ Generic[B].to(b))
+
+    case class A(i: Int, s: String)
+    case class B(b: Boolean)
+    case class C(i: Int, s: String, b: Boolean)
+
+    val c = concat(A(23, "foo"), B(true)) // C(23, "foo", true)
+    ```
+
+    Fully statically type checked, no runtime reflection
+
+    GHC's Generics feature is similar and was an inspiration
+
+    ---
+    # Generic programming with shapeless
+
+    shapeless initially only represented types of kind `*`
+
+    &mdash; fully applied, complete types like `Option[Int]`
+
+    --
+
+    &mdash; visible immediately in the type parameters and their uses ...
+
+    ```
+    trait Generic[G, Repr] {
+      def to(t: G): Repr
+      def from(t: Repr): G
+    }
+    ```
+
+    ---
+    # Generic programming with shapeless
+
+    shapeless initially only represented types of kind `*`
+
+    &mdash; fully applied, complete types like `Option[Int]`
+
+    &mdash; visible immediately in the type parameters and their uses ...
+
+    ```
+    trait Generic[`G`, Repr] {
+      def to(t: `G`): Repr
+      def from(t: Repr): `G`
+    }
+    ```
+
+    ---
+    # Generic programming with shapeless
+
+    shapeless initially only represented types of kind `*`
+
+    &mdash; fully applied, complete types like `Option[Int]`
+
+    &mdash; visible immediately in the type parameters and their uses ...
+
+    ```
+    trait Generic[G, `Repr`] {
+      def to(t: G): `Repr`
+      def from(t: `Repr`): G
+    }
+    ```
+
+    ---
+    # Generic programming with shapeless
+
+    shapeless initially only represented types of kind `*`
+
+    &mdash; fully applied, complete types like `Option[Int]`
+
+    &mdash; visible immediately in the type parameters and their uses ...
+
+    ```
+    trait Generic[G, `Repr`] {
+      def to(t: G): `Repr`
+      def from(t: `Repr`): G
+    }
+    ```
+
+    &mdash; this covers a lot of ground
+
+    ---
+    # Generic programming with shapeless
+
+    support for representing types of kind `*->*` came later
+
+    &mdash; type constructors with a single type argument like `List` or `Option`
+
+    --
+
+    &mdash; again, visible immediately in the type parameters/uses ...
+
+    ```
+    trait Generic1[G[_], Repr[_]] {
+      def to[I](t: G[I]): Repr[I]
+      def from[I](t: Repr[I]): G[I]
+    }
+    ```
+
+    ---
+    # Generic programming with shapeless
+
+    support for representing types of kind `*->*` came later
+
+    &mdash; type constructors with a single type argument like `List` or `Option`
+
+    &mdash; again, visible immediately in the type parameters/uses ...
+
+    ```
+    trait Generic1[`G[_]`, Repr[_]] {
+      def to[I](t: `G[I]`): Repr[I]
+      def from[I](t: Repr[I]): `G[I]`
+    }
+    ```
+
+    ---
+    # Generic programming with shapeless
+
+    support for representing types of kind `*->*` came later
+
+    &mdash; type constructors with a single type argument like `List` or `Option`
+
+    &mdash; again, visible immediately in the type parameters/uses ...
+
+    ```
+    trait Generic1[G[_], `Repr[_]`] {
+      def to[I](t: G[I]): `Repr[I]`
+      def from[I](t: `Repr[I]`): G[I]
+    }
+    ```
+
+    ---
+    # Generic programming with shapeless
+
+    support for representing types of kind `*->*` came later
+
+    &mdash; type constructors with a single type argument like `List` or `Option`
+
+    &mdash; again, visible immediately in the type parameters/uses ...
+
+    ```
+    trait Generic1[G[_], Repr[_]] {
+      def to[`I`](t: G[`I`]): Repr[`I`]
+      def from[`I`](t: Repr[`I`]): G[`I`]
+    }
+    ```
+
+    &mdash; notice the methods have become polymorphic
+
+    --
+
+    &mdash; supports derivation of `Functor`, `Foldable`, `Traverse` etc. ...
+
+    ---
+    class: center, middle
+
+    # Demo
+
+    ---
+    # Generic programming with shapeless
+
+    + Why stop there?
+
+    --
+
+    + Can we stop there?
+
+    --
+
+    + Kinds can get gnarly ...
+
+    ---
+    # Generic programming with shapeless
+
+    `FunctorK` (aka `HFunctor` in Haskell) is a proposed type class for Cats
+
+    ```
+    // Higher-order functor aka HFunctor
+    trait FunctorK[A[_[_]]] {
+      def mapK[F[_], G[_]](af: A[F])(f: F ~> G): A[G]
+    }
+
+    // Natural transform
+    trait ~>[F[_], G[_]] {
+      def apply[T](ft: F[T]): G[T]
+    }
+
+    // A tiny F-algebra
+    case class Order[F[_]](
+      item: F[String],
+      quantity: F[Int]
+    )
+    ```
+    ---
+    # Generic programming with shapeless
+
+    `FunctorK` (aka `HFunctor` in Haskell) is a proposed type class for Cats
+
+    ```
+    // Higher-order functor aka HFunctor
+    trait FunctorK[A[_[_]]] {
+      def mapK[F[_], G[_]](af: A[F])(f: F ~> G): A[G]
+    }
+
+    // Natural transform
+    trait ~>[F[_], G[_]] {
+      def apply[T](ft: F[T]): G[T]
+    }
+
+    // A tiny F-algebra
+    case class Order[`F[_]`](
+      item: F[String],
+      quantity: F[Int]
+    )
+    ```
+
+    * The kind of `Order` is `(*->*)->*` &mdash; (╯°□°）╯︵ ┻━┻
+
+    ---
+
+    The problems &mdash;
+
+    + A proliferation of `GenericX` type classes which differ only in the the kinds of their arguments
+
+    --
+
+    + Dotty/Scala 3 will take a very different approach to meta programming
+      + Ideally we'd replace the macros with a language intrinsic
+
+    --
+
+    + The repetition is just barely tolerable in a library &mdash; but completely unacceptable as a language primitive
+
+    ---
+    class: center, middle
+
+    # Can we abstract away the differences?
+
+    ---
+    # Can we abstract away the differences?
+
+    The first hurdle ...
+
+    There's _nowhere_ in a Scala program you can put types of different kinds
+
+    ```
+    trait Generic[G, Repr] ...
+
+    Generic[List[Int], ListRepr[Int]] // OK
+    Generic[List, ListRepr]           // Nope
+
+    trait Generic[G[_], Repr[_]]
+
+    Generic[List[Int], ListRepr[Int]] // Nope
+    Generic[List, ListRepr]           // OK
+    ```
+
+    ---
+    # Can we abstract away the differences?
+
+    We can try and encode our way out of this
+
+    We represent kinds via a family of type constructors,
+    ```
+    trait K0[T]      // List[Int] -> K0[List[Int]]
+    trait K1[F[_]]   // List      -> K1[List]
+    ...
+    ```
+
+    --
+
+    And then type application via a GADT,
+
+    ```
+    sealed trait Apply[O, I]
+    case class Apply0[T, I](value: T) extends Apply[K0[T], I]
+    case class Apply1[F[_], I](value: F[I]) extends Apply[K1[F], I]
+    ...
+
+    Apply0[K0[List[Int], Nothing]]
+    Apply1[K1[List], T]
+    ```
+
+    ---
+    # Can we abstract away the differences?
+
+    This gives us a `Generic` which looks like
+
+    ```
+    trait Generic[G, Repr] {
+      def to[I](t: Apply[G, I]): Apply[Repr, I]
+      def from[I](t: Apply[Repr, I]): Apply[G, I]
+    }
+
+    Generic[K0[List[Int]] K0[ListRepr[Int]]]
+
+    Generic[K1[List], K1[ListRepr]]
+    ```
+
+    ---
+    class: center, middle
+
+    # Demo
+
+    ---
+    class: center, middle
+
+    ... It kinda works ...
+
+    ... but it's pretty clunky ...
+
+    ---
+    # Introducing kind polymorphism
+
+    + Just get over the first hurdle ...
+
+      + Support type parameters which take arguments of any kind
+
+      + Use type level computation to do the rest
+
+      + No poly-kinded type application
+
+    + Collaboration between Pascal Voitot (@mandubian) and me
+
+      + Included in Typelevel Scala
+
+    ---
+    # Introducing kind polymorphism
+
+    ```
+    trait Generic[G <: AnyKind, Repr <: AnyKind] {
+      def to[I](t: Apply[G, I]): Apply[Repr, I]
+      def from[I](t: Apply[Repr, I]): Apply[G, I]
+    }
+
+    Generic[List[Int], ListRepr[Int]]
+
+    Generic[List, ListRepr]
+    ```
+
+    Poly-kinded type parameters are indicated by a bound of `<: AnyKind`
+
+    ---
+    # Introducing kind polymorphism
+
+    ```
+    trait Generic[`G <: AnyKind`, `Repr <: AnyKind`] {
+      def to[I](t: Apply[G, I]): Apply[Repr, I]
+      def from[I](t: Apply[Repr, I]): Apply[G, I]
+    }
+
+    Generic[List[Int], ListRepr[Int]]
+
+    Generic[List, ListRepr]
+    ```
+
+    Poly-kinded type parameters are indicated by a bound of `<: AnyKind`
+    ---
+    # Introducing kind polymorphism
+
+    ```
+    trait Generic[G <: AnyKind, Repr <: AnyKind] {
+      def to[I](t: Apply[G, I]): Apply[Repr, I]
+      def from[I](t: Apply[Repr, I]): Apply[G, I]
+    }
+
+    Generic[`List[Int]`, `ListRepr[Int]`]
+
+    Generic[`List`, `ListRepr`]
+    ```
+
+    Poly-kinded type parameters are indicated by a bound of `<: AnyKind`
+
+    `Generic` can now be applied to types of arbitrary kinds
+    ---
+    # Introducing kind polymorphism
+
+    ```
+    trait Generic[G <: AnyKind, Repr <: AnyKind] {
+      def to[I](t: `Apply[G, I]`): `Apply[Repr, I]`
+      def from[I](t: `Apply[Repr, I]`): `Apply[G, I]`
+    }
+
+    Generic[List[Int], ListRepr[Int]]
+
+    Generic[List, ListRepr]
+    ```
+
+    Poly-kinded type parameters are indicated by a bound of `<: AnyKind`
+
+    `Generic` can now be applied to types of arbitrary kinds
+
+    Notice we still have to encode poly-kinded type application
+
+    ```
+    sealed trait Apply[O <: AnyKind, I]
+    case class Apply0[T, I](value: T) extends Apply[T, I]
+    case class Apply1[F[_], I](value: F[I]) extends Apply[F, I]
+    ```
+    ---
+    class: center, middle
+
+    # Demo
+
+    ---
+    class: center, middle
+
+    ... It's a little better ...
+
+    ... but it's still pretty clunky ...
+
+    ... we decided to park it ...
+
+    ---
+    class: center, middle
+
+    # Plot Twist!
+
+    ---
+    # Adopted in Dotty!
+
+    + Initial implemention similar to Typelevel prototype
+
+    + Serves internal and theoretical purposes
+
+    + Doesn't take us any further than the last demo
+
+    + Revived our interest in pursuing the idea!
+
+    + We've been given an inch ... ;-)
+
+    ---
+    # Adopted in ~~Dotty~~!
+
+    + Initial implemention similar to Typelevel prototype
+
+    + Serves internal and theoretical purposes
+
+    + Doesn't take us any further than the last demo
+
+    + Revived our interest in pursuing the idea!
+
+    + We've been given an inch ... ;-)
+
+    ---
+    # Adopted in Scala 3!
+
+    + Initial implemention similar to Typelevel prototype
+
+    + Serves internal and theoretical purposes
+
+    + Doesn't take us any further than the last demo
+
+    + Revived our interest in pursuing the idea!
+
+    + We've been given an inch ... ;-)
+
+    ---
+    # Can we go further?
+
+    + Poly-kinded type application is the second hurdle
+
+    ```
+    trait Generic[G <: AnyKind, Repr <: AnyKind] {
+      def to[I](t: Apply[G, I]): Apply[Repr, I]
+      def from[I](t: Apply[Repr, I]): Apply[G, I]
+    }
+
+    implicit object BoxGeneric extends Generic[Box, BoxRepr] {
+      def to[I](t: Apply[Box, I]): Apply[BoxRepr, I] = t.kmap(to0)
+      def from[I](r: Apply[BoxRepr, I]): Apply[Box, I] = r.kmap(from0)
+
+      def to0[T](t: Box[T]): BoxRepr[T] = (t.contents, ())
+      def from0[T](r: BoxRepr[T]): Box[T] = Box(r._1)
+    }
+    ```
+
+    Much of the remaining noise is in the implementations
+
+    ---
+    # Can we go further?
+
+    + Poly-kinded type application is the second hurdle
+
+    ```
+    trait Generic[G <: AnyKind, Repr <: KindOf[G]] {
+      def to[I <: ArgsOf[G]](t: G[I]): Repr[I]
+      def from[I <: ArgsOf[G]](t: Repr[I]): G[I]
+    }
+
+    implicit object BoxGeneric extends Generic[Box, BoxRepr] {
+
+
+
+      def to[T](t: Box[T]): BoxRepr[T] = (t.contents, ())
+      def from[T](r: BoxRepr[T]): Box[T] = Box(r._1)
+    }
+    ```
+
+    This looks a lot better!
+    ---
+    # Can we go further?
+
+    + Poly-kinded type application is the second hurdle
+
+    ```
+    trait Generic[`G` <: AnyKind, `Repr` <: KindOf[G]] {
+      def to[`I <: ArgsOf[G]`](t: G[I]): Repr[I]
+      def from[`I <: ArgsOf[G]`](t: Repr[I]): G[I]
+    }
+
+    implicit object BoxGeneric extends Generic[Box, BoxRepr] {
+
+
+
+      def to[T](t: Box[T]): BoxRepr[T] = (t.contents, ())
+      def from[T](r: BoxRepr[T]): Box[T] = Box(r._1)
+    }
+    ```
+
+    Semantically the type parameters have to match the kinds of the types that
+    are applied to them.
+
+    ---
+    # Can we go further?
+
+    + Poly-kinded type application is the second hurdle
+
+    ```
+    trait Generic[G <: AnyKind, Repr <: KindOf[G]] {
+      def to[I <: ArgsOf[G]](t: G[I]): Repr[I]
+      def from[I <: ArgsOf[G]](t: Repr[I]): G[I]
+    }
+
+    implicit object BoxGeneric extends Generic[`Box`, `BoxRepr`] {
+
+
+
+      def to[`T`](t: Box[`T`]): BoxRepr[`T`] = (t.contents, ())
+      def from[`T`](r: BoxRepr[`T`]): Box[`T`] = Box(r._1)
+    }
+    ```
+
+    Semantically the type parameters have to match the kinds of the types that
+    are applied to them.
+
+    ---
+    # Can we go further?
+
+    + Poly-kinded type application is the second hurdle
+
+    ```
+    trait Generic[G <: AnyKind, Repr <: KindOf[G]] {
+      def to[I <: ArgsOf[G]](t: G[I]): Repr[I]
+      def from[I <: ArgsOf[G]](t: Repr[I]): G[I]
+    }
+
+    implicit object BoxGeneric extends Generic[`Box`, `BoxRepr`] {
+
+
+
+      def to[`T`](t: Box[`T`]): BoxRepr[`T`] = (t.contents, ())
+      def from[`T`](r: BoxRepr[`T`]): Box[`T`] = Box(r._1)
+    }
+    ```
+
+    Erasure is our friend here.
+
+    ---
+    # Can we go further?
+
+    + Poly-kinded type application is the second hurdle
+
+    ```
+    trait Generic[G <: AnyKind, Repr <: KindOf[G]] {
+      def to[I <: ArgsOf[G]](t: G[I]): Repr[I]
+      def from[I <: ArgsOf[G]](t: Repr[I]): G[I]
+    }
+
+    implicit object BoxGeneric extends Generic[Box, BoxRepr] {
+      // def bridge$to[I](t: Apply[Box, I]): Apply[BoxRepr, I] = ...
+      // def bridge$from[I](r: Apply[BoxRepr, I]): Apply[Box, I] = ...
+
+      def to[T](t: Box[T]): BoxRepr[T] = (t.contents, ())
+      def from[T](r: BoxRepr[T]): Box[T] = Box(r._1)
+    }
+    ```
+
+    We most likely end up with bridge methods similar to the encoding
+
+    ---
+    # Current status
+
+    + Typelevel Scala prototype
+
+    + Initial Dotty implementation
+
+    + Backport from Dotty to Lightbend Scala
+
+    + Experiment with poly-kinded application
+
+    + SIP!
+
+    ---
+    class: center, middle
+
+    # Questions?
+
+    ---
+    class: center, middle, hero
+
+    .title[
+      # Thank You
+      ## Miles Sabin, [@milessabin](http://twitter.com/milessabin)
+      ### http://typelevel.org/
+
+      [![Typelevel logo](img/logo.svg)](http://typelevel.org)
+    ]
+
+    ---
+    # Dotty details
+
+    Kinds are encoded via subtyping,
+
+    + Normal types
+
+      `Int`
+    + Higher kinded types
+
+      `Option, List`
+
+      `Map`
+    ---
+    # Dotty details
+
+    Kinds are encoded via subtyping,
+
+    + Normal types
+
+      `Any`
+    + Higher kinded types
+
+      `[+T] => Any`
+
+      `[T, +U] => Any`
+
+    ---
+    # Dotty details
+
+    Kinds are encoded via subtyping,
+
+    + Normal types
+
+      `Any`
+    + Higher kinded types
+
+      `[+T] => Any`
+
+      `[T, +U] => Any`
+
+    This sidestep's Girard's Paradox, because the kinds are types which already exist, ie. "kind of" is a surjection
+    on the universe of Scala types
+
+  </textarea>
+  <!--
+    There's a copy of this JS included in the cached folder,
+    to give yourself a chance if you have no internets /o\
+  -->
+  <script src="cache/remark-latest.min.js">
+  </script>
+  <script>
+    var slideshow = remark.create({
+      //ratio: '4:3',
+      ratio: '16:9',
+
+
+      slideNumberFormat: '',
+      // Or you might like the page number bottom right:
+      // slideNumberFormat: '%current%',
+
+      // Default: use ```sql ..``` etc to override
+      highlightLanguage: 'scala',
+
+      // Plausible style for blue background:
+      highlightStyle: 'github',
+
+      // These also look reasonable:
+      //highlightStyle: 'default',
+      //highlightStyle: 'ascetic',
+      //highlightStyle: 'vs',
+
+      //Good styles, but don't really work with a blue background:
+      //highlightStyle: 'ir_black',
+      //highlightStyle: 'dark',
+
+      highlightLines: true,
+      highlightSpans: true,
+      });
+  </script>
+</body>
+</html>
