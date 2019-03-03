@@ -41,6 +41,7 @@ module.exports = (grunt) ->
         options:
           font: 'ms'
           engine: 'node'
+          normalize: true
           htmlDemo: false
           relativeFontPath: '/fonts/'
           syntax: 'bootstrap'
