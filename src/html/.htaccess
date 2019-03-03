@@ -1,4 +1,4 @@
-Redirect /index.html https://plus.google.com/117117878292459457922/about
+Redirect /index.html https://milessabin.com/blog/
 
 ErrorDocument 401 default
 ErrorDocument 403 default
