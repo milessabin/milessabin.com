@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "coffeeify": "^1.0.0",
-    "grunt": "^1.0.3",
+    "grunt": "^1.0.4",
     "grunt-browserify": "^5.3.0",
     "grunt-contrib-connect": "^2.0.0",
     "grunt-contrib-copy": "^0.7.0",
@@ -11,7 +11,7 @@
     "grunt-exec": "^0.4.6",
     "grunt-webfont": "^1.7.2",
     "minifyify": "^7.3.5",
-    "uglifyify": "^5.0.1"
+    "uglifyify": "^5.0.2"
   },
   "dependencies": {
     "anchor-js": "^3.2.1",
