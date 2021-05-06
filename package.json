@@ -21,6 +21,6 @@
     "respond.js": "^1.4.2",
     "retina.js": "git://github.com/imulus/retinajs.git#1.3.0",
     "svg4everybody": "0.0.2",
-    "underscore": "^1.7.0"
+    "underscore": "^1.12.1"
   }
 }
